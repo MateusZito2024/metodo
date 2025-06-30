@@ -79,7 +79,7 @@
             margin: 0 auto 60px;
         }
 
-        /* --- Seção Herói (Abertura) --- */
+        /*---Seção Herói (Abertura)---*/
         .hero {
             padding: 60px 0;
             background-color: #F5F3F7;
@@ -159,7 +159,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* --- Seção Para Quem é (Benefícios) --- */
+        /*---Seção Para Quem é (Benefícios)---*/
         .benefits {
             background-color: var(--accent-gold);
         }
@@ -209,7 +209,7 @@
             left: 100%;
         }
 
-        /* --- Seção Depoimentos --- */
+        /*---Seção Depoimentos---*/
         .testimonials {
             background-color: var(--white);
         }
@@ -257,7 +257,7 @@
             transform: scale(1.05);
         }
 
-        /* --- Seção Bônus --- */
+        /*---Seção Bônus---*/
         .bonus {
             background-color: var(--bg-light);
         }
@@ -315,13 +315,13 @@
             margin-top: 60px;
         }
 
-        /* --- ANIMAÇÃO DO CARROSSEL --- */
+        /*---ANIMAÇÃO DO CARROSSEL---*/
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX( calc(-1 * var(--scroll-width)) ); }
         }
 
-        /* --- Seção Mídia (CARROSSEL) --- */
+        /*---Seção Mídia (CARROSSEL)---*/
         .media-section {
             background-color: var(--accent-gold);
         }
@@ -335,24 +335,24 @@
             position: relative;
             overflow: hidden;
             margin-top: 40px;
-            /* Efeito de fade nas bordas para suavizar a entrada e saída */
+            /*Efeito de fade nas bordas para suavizar a entrada e saída*/
             -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
             mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
         }
         .gallery-track {
             display: flex;
-            width: fit-content; /* Ocupa a largura total dos itens */
-            /* A animação será controlada por JS para definir as variáveis */
+            width: fit-content; /*Ocupa a largura total dos itens*/
+            /*A animação será controlada por JS para definir as variáveis*/
             animation: scroll var(--scroll-duration, 40s) linear infinite;
         }
-        /* Pausa a animação ao passar o mouse */
+        /*Pausa a animação ao passar o mouse*/
         .gallery:hover .gallery-track {
             animation-play-state: paused;
         }
         .gallery-item {
             height: 250px;
             flex-shrink: 0;
-            /* Para 4 itens em tela grande */
+            /*Para 4 itens em tela grande*/
             flex-basis: calc(25% - 16px);
             margin: 0 8px;
             
@@ -371,7 +371,7 @@
             border-radius: 10px;
         }
         
-        /* --- Seção Sobre --- */
+        /*---Seção Sobre---*/
         .about {
             background-color: var(--white);
         }
@@ -385,7 +385,7 @@
         .about-image { flex-basis: 40%; max-width: 400px; }
         .about-image img { width: 100%; border-radius: 15px; }
 
-        /* --- Seção FAQ (Perguntas Frequentes) --- */
+        /*---Seção FAQ (Perguntas Frequentes)---*/
         .faq-section {
             background-color: var(--bg-light);
         }
@@ -428,13 +428,13 @@
             padding: 0px 25px 25px 25px;
         }
 
-        /* --- Rodapé --- */
+        /*---Rodapé---*/
         footer {
             background-color: #2b2b2b; color: #ccc; padding: 50px 0; text-align: center; font-size: 0.9em;
         }
         footer p { margin: 0 0 10px; }
 
-        /* --- Animações --- */
+        /*---Animações---*/
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes wiggle {
@@ -461,10 +461,10 @@
             to { opacity: 1; transform: translateX(0); filter: blur(0); }
         }
 
-        /* --- Responsividade --- */
+        /*---Responsividade---*/
         @media (max-width: 1100px) {
             .gallery-item {
-                /* Para 3 itens */
+                /*Para 3 itens*/
                 flex-basis: calc(33.333% - 16px);
             }
         }
@@ -481,7 +481,7 @@
             .section-title { font-size: 2.2em; }
             .hero-text-item h1 { font-size: 2.5em; }
             .gallery-item {
-                /* Para 2 itens */
+                /*Para 2 itens*/
                 flex-basis: calc(50% - 16px);
             }
         }
@@ -490,7 +490,7 @@
                 grid-template-columns: 1fr;
             }
             .gallery-item {
-                /* Para 1 item */
+                /*Para 1 item*/
                 flex-basis: 90%;
             }
         }
@@ -659,7 +659,7 @@
     <footer>
         <div class="footer-container">
             <p>Copyright 2025 – NeuroSintonia. Todos os direitos reservados.</p>
-            <p>Criado e mantido por RENATA MARIANO.</p>
+            <p>Criado e mantido por RENATA DAVID.</p>
             <p style="font-size: 0.8em; color: #aaa; margin-top: 20px; line-height: 1.6;">
                 <strong>Disclaimer:</strong> Este site não é afiliado ao Facebook ou qualquer entidade do Facebook. Não vendemos seu e-mail ou qualquer informação. Os resultados aqui mostrados não são típicos e não garantem que você obterá os mesmos. O sucesso depende do seu esforço, dedicação e aplicação dos métodos. Nosso objetivo é compartilhar uma história e um método que podem ajudar, mas o trabalho para restaurar sua família é seu.
             </p>
