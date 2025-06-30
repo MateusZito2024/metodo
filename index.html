@@ -79,7 +79,7 @@
             margin: 0 auto 60px;
         }
 
-        /*---Seção Herói (Abertura)---*/
+        /* --- Seção Herói (Abertura) --- */
         .hero {
             padding: 60px 0;
             background-color: #F5F3F7;
@@ -159,7 +159,7 @@
             animation: pulse 2s infinite;
         }
 
-        /*---Seção Para Quem é (Benefícios)---*/
+        /* --- Seção Para Quem é (Benefícios) --- */
         .benefits {
             background-color: var(--accent-gold);
         }
@@ -209,7 +209,7 @@
             left: 100%;
         }
 
-        /*---Seção Depoimentos---*/
+        /* --- Seção Depoimentos --- */
         .testimonials {
             background-color: var(--white);
         }
@@ -257,7 +257,7 @@
             transform: scale(1.05);
         }
 
-        /*---Seção Bônus---*/
+        /* --- Seção Bônus --- */
         .bonus {
             background-color: var(--bg-light);
         }
@@ -315,13 +315,13 @@
             margin-top: 60px;
         }
 
-        /*---ANIMAÇÃO DO CARROSSEL---*/
+        /* --- ANIMAÇÃO DO CARROSSEL --- */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX( calc(-1 * var(--scroll-width)) ); }
         }
 
-        /*---Seção Mídia (CARROSSEL)---*/
+        /* --- Seção Mídia (CARROSSEL) --- */
         .media-section {
             background-color: var(--accent-gold);
         }
@@ -335,27 +335,22 @@
             position: relative;
             overflow: hidden;
             margin-top: 40px;
-            /*Efeito de fade nas bordas para suavizar a entrada e saída*/
             -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
             mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
         }
         .gallery-track {
             display: flex;
-            width: fit-content; /*Ocupa a largura total dos itens*/
-            /*A animação será controlada por JS para definir as variáveis*/
+            width: fit-content;
             animation: scroll var(--scroll-duration, 40s) linear infinite;
         }
-        /*Pausa a animação ao passar o mouse*/
         .gallery:hover .gallery-track {
             animation-play-state: paused;
         }
         .gallery-item {
             height: 250px;
             flex-shrink: 0;
-            /*Para 4 itens em tela grande*/
             flex-basis: calc(25% - 16px);
             margin: 0 8px;
-            
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
@@ -371,7 +366,7 @@
             border-radius: 10px;
         }
         
-        /*---Seção Sobre---*/
+        /* --- Seção Sobre --- */
         .about {
             background-color: var(--white);
         }
@@ -385,7 +380,7 @@
         .about-image { flex-basis: 40%; max-width: 400px; }
         .about-image img { width: 100%; border-radius: 15px; }
 
-        /*---Seção FAQ (Perguntas Frequentes)---*/
+        /* --- Seção FAQ (Perguntas Frequentes) --- */
         .faq-section {
             background-color: var(--bg-light);
         }
@@ -428,13 +423,42 @@
             padding: 0px 25px 25px 25px;
         }
 
-        /*---Rodapé---*/
+        /* --- Rodapé --- */
         footer {
-            background-color: #2b2b2b; color: #ccc; padding: 50px 0; text-align: center; font-size: 0.9em;
+            background-color: #2b2b2b; 
+            color: #ccc; 
+            padding: 50px 0; 
+            text-align: center; 
+            font-size: 0.9em;
+            position: relative;
         }
-        footer p { margin: 0 0 10px; }
+        .footer-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 0 15px; 
+        }
+        footer p { 
+            margin: 0 0 10px; 
+        }
+        
+        /* --- ESTILOS DAS LOGOS --- */
+        .site-logo {
+            position: absolute;
+            z-index: 1000; /* Garante que fique sobre outros elementos */
+        }
+        .logo-header {
+            top: 20px;
+            left: 20px;
+            height: 50px;
+        }
+        .logo-footer {
+            top: 40px; /* Alinha com o padding do rodapé */
+            left: 20px;
+            height: 60px;
+        }
 
-        /*---Animações---*/
+
+        /* --- Animações --- */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes wiggle {
@@ -461,10 +485,9 @@
             to { opacity: 1; transform: translateX(0); filter: blur(0); }
         }
 
-        /*---Responsividade---*/
+        /* --- Responsividade --- */
         @media (max-width: 1100px) {
             .gallery-item {
-                /*Para 3 itens*/
                 flex-basis: calc(33.333% - 16px);
             }
         }
@@ -481,7 +504,6 @@
             .section-title { font-size: 2.2em; }
             .hero-text-item h1 { font-size: 2.5em; }
             .gallery-item {
-                /*Para 2 itens*/
                 flex-basis: calc(50% - 16px);
             }
         }
@@ -490,7 +512,6 @@
                 grid-template-columns: 1fr;
             }
             .gallery-item {
-                /*Para 1 item*/
                 flex-basis: 90%;
             }
         }
@@ -498,167 +519,173 @@
     </style>
 </head>
 <body>
-
-    <section class="section hero">
-        <div style="position: absolute; top: -50px; right: -80px; width: 800px; height: auto; z-index: 1; transform: scaleX(-1); pointer-events: none; opacity: 0.7;">
-            <img src="https://i.postimg.cc/hGMmVVVt/b0e1a7fb73aac0cd1c6d7086ebefd319-Photoroom.png" alt="" style="width: 100%; height: auto;">
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div id="text-rotator">
-                        <div class="hero-text-item active">
-                            <h1>Está passando por uma crise no seu casamento?</h1>
-                            <p>Chega de fazer anos de terapia sem resultados. Eu resolvi o meu casamento em 3 meses e vou te mostrar como resolver o seu caso!</p>
+    
+    <img src="https://i.postimg.cc/sXJyXbD0/34181b33-d42a-4dbc-9e4a-62b533a83a19-Photoroom.png" alt="NeuroSintonia Logo" class="site-logo logo-header">
+    
+    <main>
+        <section class="section hero">
+            <div style="position: absolute; top: -50px; right: -80px; width: 800px; height: auto; z-index: 1; transform: scaleX(-1); pointer-events: none; opacity: 0.7;">
+                <img src="https://i.postimg.cc/hGMmVVVt/b0e1a7fb73aac0cd1c6d7086ebefd319-Photoroom.png" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div id="text-rotator">
+                            <div class="hero-text-item active">
+                                <h1>Está passando por uma crise no seu casamento?</h1>
+                                <p>Chega de fazer anos de terapia sem resultados. Eu resolvi o meu casamento em 3 meses e vou te mostrar como resolver o seu caso!</p>
+                            </div>
+                            <div class="hero-text-item">
+                                <h1>Se sente sozinha mesmo estando casada?</h1>
+                                <p>A solidão a dois é uma das dores mais profundas. Existe um caminho para reencontrar a companhia e a cumplicidade.</p>
+                            </div>
+                            <div class="hero-text-item">
+                                <h1>A comunicação com seu parceiro virou um desafio?</h1>
+                                <p>Quando o diálogo acaba, os problemas crescem. Aprenda a restaurar a ponte da comunicação efetiva.</p>
+                            </div>
+                            <div class="hero-text-item">
+                                <h1>Sonha em resgatar a paixão e a conexão do início?</h1>
+                                <p>A chama não precisa se apagar. Descubra como reacender o desejo e a admiração que os uniu.</p>
+                            </div>
                         </div>
-                        <div class="hero-text-item">
-                            <h1>Se sente sozinha mesmo estando casada?</h1>
-                            <p>A solidão a dois é uma das dores mais profundas. Existe um caminho para reencontrar a companhia e a cumplicidade.</p>
-                        </div>
-                        <div class="hero-text-item">
-                            <h1>A comunicação com seu parceiro virou um desafio?</h1>
-                            <p>Quando o diálogo acaba, os problemas crescem. Aprenda a restaurar a ponte da comunicação efetiva.</p>
-                        </div>
-                        <div class="hero-text-item">
-                            <h1>Sonha em resgatar a paixão e a conexão do início?</h1>
-                            <p>A chama não precisa se apagar. Descubra como reacender o desejo e a admiração que os uniu.</p>
-                        </div>
+                        <a href="https://form.jotform.com/240924402831652" class="cta-button">Receba uma Sessão Gratuita</a>
                     </div>
-                    <a href="https://form.jotform.com/240924402831652" class="cta-button">Receba uma Sessão Gratuita</a>
-                </div>
-                <div class="hero-image-wrapper">
-                    <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/mockup-novo-mobile-quem-sou-eu-12.png" alt="Renata David" class="main-img">
+                    <div class="hero-image-wrapper">
+                        <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/mockup-novo-mobile-quem-sou-eu-12.png" alt="Renata David" class="main-img">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section benefits">
-        <div class="container">
-            <h2 class="section-title">Para quem é a Sessão Experimental?</h2>
-            <p class="section-subtitle">Esta mentoria é para mulheres decididas a dar uma última e verdadeira chance de restaurar sua família e seu casamento.</p>
-            <div class="benefits-grid">
-                <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
-                <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
-                <div class="benefit-card"><span>Para quem passou por uma traição e não sabe o que fazer.</span></div>
-                <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
-                <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
-                <div class="benefit-card"><span>Não quer jogar toda a história e as conquistas da família fora.</span></div>
+        <section class="section benefits">
+            <div class="container">
+                <h2 class="section-title">Para quem é a Sessão Experimental?</h2>
+                <p class="section-subtitle">Esta mentoria é para mulheres decididas a dar uma última e verdadeira chance de restaurar sua família e seu casamento.</p>
+                <div class="benefits-grid">
+                    <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
+                    <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
+                    <div class="benefit-card"><span>Para quem passou por uma traição e não sabe o que fazer.</span></div>
+                    <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
+                    <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
+                    <div class="benefit-card"><span>Não quer jogar toda a história e as conquistas da família fora.</span></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">O Que Minhas Mentoradas Falam de Mim?</h2>
-            <p class="section-subtitle">Resultados reais de mulheres que transformaram seus casamentos e suas vidas em poucas semanas.</p>
-            <div class="testimonials-videos">
-                <div class="testimonial-video">
-                    <iframe src="https://www.youtube.com/embed/fGBDIpHhIxE" title="Depoimento 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <section class="section testimonials">
+            <div class="container">
+                <h2 class="section-title">O Que Minhas Mentoradas Falam de Mim?</h2>
+                <p class="section-subtitle">Resultados reais de mulheres que transformaram seus casamentos e suas vidas em poucas semanas.</p>
+                <div class="testimonials-videos">
+                    <div class="testimonial-video">
+                        <iframe src="https://www.youtube.com/embed/fGBDIpHhIxE" title="Depoimento 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="testimonial-video">
+                        <iframe src="https://www.youtube.com/embed/jshj_BvDxQE" title="Depoimento 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
-                <div class="testimonial-video">
-                    <iframe src="https://www.youtube.com/embed/jshj_BvDxQE" title="Depoimento 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="testimonial-prints-grid">
+                    <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.04-1-622x1024.jpeg" alt="Depoimento em texto 1"></div>
+                    <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-2-683x1024.jpeg" alt="Depoimento em texto 8"></div>
+                    <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.02-632x1024.jpeg" alt="Depoimento em texto 4"></div>
+                    <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-1-704x1024.jpeg" alt="Depoimento em texto 5"></div>
                 </div>
             </div>
-             <div class="testimonial-prints-grid">
-                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.04-1-622x1024.jpeg" alt="Depoimento em texto 1"></div>
-                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-2-683x1024.jpeg" alt="Depoimento em texto 8"></div>
-                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.02-632x1024.jpeg" alt="Depoimento em texto 4"></div>
-                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-1-704x1024.jpeg" alt="Depoimento em texto 5"></div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section bonus">
-        <div class="container">
-            <h2 class="section-title">Além da Sessão, Receba Dois Presentes Exclusivos!</h2>
-            <p class="section-subtitle">Ao se cadastrar hoje, você garante acesso imediato a estas ferramentas para acelerar sua transformação.</p>
-            <div class="bonus-grid">
-                <div class="bonus-card">
-                    <span class="tag">PRESENTE 1</span>
-                    <h3>Podcast Exclusivo</h3>
-                    <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.14.59.jpeg" alt="Podcast Bônus">
-                    <p>Uma gravação única com Renata e seu marido Rafael, onde compartilham os bastidores da jornada de restauração do casamento deles.</p>
+        <section class="section bonus">
+            <div class="container">
+                <h2 class="section-title">Além da Sessão, Receba Dois Presentes Exclusivos!</h2>
+                <p class="section-subtitle">Ao se cadastrar hoje, você garante acesso imediato a estas ferramentas para acelerar sua transformação.</p>
+                <div class="bonus-grid">
+                    <div class="bonus-card">
+                        <span class="tag">PRESENTE 1</span>
+                        <h3>Podcast Exclusivo</h3>
+                        <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.14.59.jpeg" alt="Podcast Bônus">
+                        <p>Uma gravação única com Renata e seu marido Rafael, onde compartilham os bastidores da jornada de restauração do casamento deles.</p>
+                    </div>
+                    <div class="bonus-card">
+                        <span class="tag">PRESENTE 2</span>
+                        <h3>Desafio "Controle a Ansiedade"</h3>
+                        <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.15.01.jpeg" alt="Desafio Controle a Ansiedade">
+                        <p>Um desafio prático de 7 dias para te ajudar a lidar com as crises de choro e ansiedade, trazendo paz para o seu coração durante o processo.</p>
+                    </div>
                 </div>
-                <div class="bonus-card">
-                    <span class="tag">PRESENTE 2</span>
-                    <h3>Desafio "Controle a Ansiedade"</h3>
-                    <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.15.01.jpeg" alt="Desafio Controle a Ansiedade">
-                    <p>Um desafio prático de 7 dias para te ajudar a lidar com as crises de choro e ansiedade, trazendo paz para o seu coração durante o processo.</p>
-                </div>
-            </div>
-            <div class="final-cta">
-                <a href="https://form.jotform.com/240924402831652" class="cta-button">Quero Meus Bônus + Sessão Gratuita</a>
-            </div>
-        </div>
-    </section>
-   
-    <section class="section media-section">
-        <div class="container">
-            <h2 class="section-title">Na Mídia</h2>
-            <p class="section-subtitle">Palestras e entrevistas em programas de TV e Rádio compartilhando o poder da NeuroSintonia.</p>
-            <div class="gallery">
-                 <div class="gallery-track">
-                    <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.35-1024x843.jpeg" alt="Mídia 1"></div>
-                    <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.33.jpeg" alt="Mídia 2"></div>
-                    <div class="gallery-item"><img src="https://i.postimg.cc/R0jXj07c/1000212225.jpg" alt="Mídia 3" style="object-position: left;"></div>
-                    <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32.jpeg" alt="Mídia 4"></div>
-                    <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.37-972x1024.jpeg" alt="Mídia 5"></div>
-                    <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.29.jpeg" alt="Mídia 6"></div>
-                    <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32-1.jpeg" alt="Mídia 7"></div>
-                    <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.34-859x1024.jpeg" alt="Mídia 8"></div>
+                <div class="final-cta">
+                    <a href="https://form.jotform.com/240924402831652" class="cta-button">Quero Meus Bônus + Sessão Gratuita</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+       
+        <section class="section media-section">
+            <div class="container">
+                <h2 class="section-title">Na Mídia</h2>
+                <p class="section-subtitle">Palestras e entrevistas em programas de TV e Rádio compartilhando o poder da NeuroSintonia.</p>
+                <div class="gallery">
+                     <div class="gallery-track">
+                        <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.35-1024x843.jpeg" alt="Mídia 1"></div>
+                        <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.33.jpeg" alt="Mídia 2"></div>
+                        <div class="gallery-item"><img src="https://i.postimg.cc/R0jXj07c/1000212225.jpg" alt="Mídia 3" style="object-position: left;"></div>
+                        <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32.jpeg" alt="Mídia 4"></div>
+                        <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.37-972x1024.jpeg" alt="Mídia 5"></div>
+                        <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.29.jpeg" alt="Mídia 6"></div>
+                        <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32-1.jpeg" alt="Mídia 7"></div>
+                        <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.34-859x1024.jpeg" alt="Mídia 8"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="section about">
-        <div class="container about-content">
-            <div class="about-text">
-                <h2 class="section-title" style="text-align: left; margin: 0 0 20px 0;">Quem é Renata David?</h2>
-                <p>Renata é <strong>Mentora, Neurocientista, Mestre em Ciências Médicas pela UFRGS, Palestrante e Escritora.</strong> ⚜️</p>
-                <p>Ela descobriu a NeuroSintonia depois de ter tentado todos os outros tipos de terapia para <strong>restaurar o seu casamento com o Rafa e não ter nenhum tipo de resultado.</strong></p>
-                <p>Hoje, usando o conhecimento que ensina, <strong>restaurou a sua família</strong> e vive um casamento incrível e bem sucedido.</p>
-                <p>Já ajudou <strong>CENTENAS</strong> de mulheres a restaurarem seus relacionamentos de forma rápida usando o único método do Brasil que combina a Neurociência com os Princípios Bíblicos.</p>
+        <section class="section about">
+            <div class="container about-content">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin: 0 0 20px 0;">Quem é Renata David?</h2>
+                    <p>Renata é <strong>Mentora, Neurocientista, Mestre em Ciências Médicas pela UFRGS, Palestrante e Escritora.</strong> ⚜️</p>
+                    <p>Ela descobriu a NeuroSintonia depois de ter tentado todos os outros tipos de terapia para <strong>restaurar o seu casamento com o Rafa e não ter nenhum tipo de resultado.</strong></p>
+                    <p>Hoje, usando o conhecimento que ensina, <strong>restaurou a sua família</strong> e vive um casamento incrível e bem sucedido.</p>
+                    <p>Já ajudou <strong>CENTENAS</strong> de mulheres a restaurarem seus relacionamentos de forma rápida usando o único método do Brasil que combina a Neurociência com os Princípios Bíblicos.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/mockup-novo-mobile-quem-sou-eu-12-1-1024x1024.png" alt="Foto de Renata David">
+                </div>
             </div>
-            <div class="about-image">
-                <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/mockup-novo-mobile-quem-sou-eu-12-1-1024x1024.png" alt="Foto de Renata David">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section faq-section">
-        <div class="container">
-            <h2 class="section-title">Tire Suas Dúvidas</h2>
-            <p class="section-subtitle">Respostas para as perguntas mais comuns sobre a mentoria e o método NeuroSintonia.</p>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question"><span>O que é a metodologia NeuroSintonia?</span><span class="arrow">+</span></div>
-                    <div class="faq-answer"><p>É um método exclusivo que combina Neurociência e Princípios Bíblicos para reprogramar padrões de pensamento e comportamento, restaurando a conexão e a harmonia no casamento de forma rápida e eficaz.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question"><span>Qual a diferença para a terapia de casal tradicional?</span><span class="arrow">+</span></div>
-                    <div class="faq-answer"><p>Diferente da terapia tradicional, que pode levar anos, o NeuroSintonia foca em ações práticas e na reprogramação da sua mente para gerar resultados visíveis em poucas semanas, sem depender da participação do seu marido no início.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question"><span>Meu marido precisa participar das sessões?</span><span class="arrow">+</span></div>
-                    <div class="faq-answer"><p>Não! A grande vantagem do método é que ele começa com você. Ao mudar a sua postura e a sua energia através das técnicas, você inspira a mudança no ambiente e no seu parceiro de forma natural, sem a necessidade de convencê-lo a participar.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question"><span>A Sessão Experimental é realmente gratuita?</span><span class="arrow">+</span></div>
-                    <div class="faq-answer"><p>Sim, totalmente gratuita e sem compromisso. O objetivo é que você conheça o método, receba um direcionamento inicial para o seu caso e decida com clareza se a mentoria completa é o caminho certo para você e sua família.</p></div>
-                </div>
-                 <div class="faq-item">
-                    <div class="faq-question"><span>Isso funciona se já tentamos de tudo?</span><span class="arrow">+</span></div>
-                    <div class="faq-answer"><p>Sim! Muitas das mulheres que chegam até mim já passaram por diversas terapias sem sucesso. O NeuroSintonia funciona porque aborda a raiz dos problemas de uma forma diferente, focando na sua transformação interna, que é a chave para a mudança externa.</p></div>
+        <section class="section faq-section">
+            <div class="container">
+                <h2 class="section-title">Tire Suas Dúvidas</h2>
+                <p class="section-subtitle">Respostas para as perguntas mais comuns sobre a mentoria e o método NeuroSintonia.</p>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question"><span>O que é a metodologia NeuroSintonia?</span><span class="arrow">+</span></div>
+                        <div class="faq-answer"><p>É um método exclusivo que combina Neurociência e Princípios Bíblicos para reprogramar padrões de pensamento e comportamento, restaurando a conexão e a harmonia no casamento de forma rápida e eficaz.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><span>Qual a diferença para a terapia de casal tradicional?</span><span class="arrow">+</span></div>
+                        <div class="faq-answer"><p>Diferente da terapia tradicional, que pode levar anos, o NeuroSintonia foca em ações práticas e na reprogramação da sua mente para gerar resultados visíveis em poucas semanas, sem depender da participação do seu marido no início.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><span>Meu marido precisa participar das sessões?</span><span class="arrow">+</span></div>
+                        <div class="faq-answer"><p>Não! A grande vantagem do método é que ele começa com você. Ao mudar a sua postura e a sua energia através das técnicas, você inspira a mudança no ambiente e no seu parceiro de forma natural, sem a necessidade de convencê-lo a participar.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><span>A Sessão Experimental é realmente gratuita?</span><span class="arrow">+</span></div>
+                        <div class="faq-answer"><p>Sim, totalmente gratuita e sem compromisso. O objetivo é que você conheça o método, receba um direcionamento inicial para o seu caso e decida com clareza se a mentoria completa é o caminho certo para você e sua família.</p></div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question"><span>Isso funciona se já tentamos de tudo?</span><span class="arrow">+</span></div>
+                        <div class="faq-answer"><p>Sim! Muitas das mulheres que chegam até mim já passaram por diversas terapias sem sucesso. O NeuroSintonia funciona porque aborda a raiz dos problemas de uma forma diferente, focando na sua transformação interna, que é a chave para a mudança externa.</p></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
+        <img src="https://i.postimg.cc/sXJyXbD0/34181b33-d42a-4dbc-9e4a-62b533a83a19-Photoroom.png" alt="NeuroSintonia Logo" class="site-logo logo-footer">
         <div class="footer-container">
             <p>Copyright 2025 – NeuroSintonia. Todos os direitos reservados.</p>
+            <p>Criado e mantido por RENATA MARIANO.</p>
             <p style="font-size: 0.8em; color: #aaa; margin-top: 20px; line-height: 1.6;">
                 <strong>Disclaimer:</strong> Este site não é afiliado ao Facebook ou qualquer entidade do Facebook. Não vendemos seu e-mail ou qualquer informação. Os resultados aqui mostrados não são típicos e não garantem que você obterá os mesmos. O sucesso depende do seu esforço, dedicação e aplicação dos métodos. Nosso objetivo é compartilhar uma história e um método que podem ajudar, mas o trabalho para restaurar sua família é seu.
             </p>
@@ -673,23 +700,18 @@
                 const answer = item.querySelector('.faq-answer');
                 const arrow = question.querySelector('.arrow');
                 
-                // Fecha outros itens abertos
+                const isActive = item.classList.contains('active');
+
                 document.querySelectorAll('.faq-item.active').forEach(openItem => {
-                    if (openItem !== item) {
-                        openItem.classList.remove('active');
-                        openItem.querySelector('.faq-answer').style.maxHeight = 0;
-                        openItem.querySelector('.arrow').textContent = '+';
-                    }
+                    openItem.classList.remove('active');
+                    openItem.querySelector('.faq-answer').style.maxHeight = 0;
+                    openItem.querySelector('.arrow').textContent = '+';
                 });
 
-                // Abre ou fecha o item clicado
-                item.classList.toggle('active');
-                if (item.classList.contains('active')) {
+                if (!isActive) {
+                    item.classList.add('active');
                     answer.style.maxHeight = answer.scrollHeight + 'px';
                     arrow.textContent = '−';
-                } else {
-                    answer.style.maxHeight = 0;
-                    arrow.textContent = '+';
                 }
             });
         });
@@ -729,25 +751,19 @@
                 const track = gallery.querySelector('.gallery-track');
                 const items = Array.from(track.children);
 
-                // Duplica os itens para criar o efeito de loop
                 items.forEach(item => {
                     const clone = item.cloneNode(true);
                     track.appendChild(clone);
                 });
 
-                // Calcula a largura total dos itens originais para a animação
                 let totalWidth = 0;
                 items.forEach(item => {
-                    // Soma a largura do item + sua margem horizontal (8px esquerda + 8px direita)
                     totalWidth += item.offsetWidth + 16;
                 });
                 
-                // Define a velocidade de rolagem (pixels por segundo)
                 const scrollSpeed = 60; 
-                // Calcula a duração da animação para manter a velocidade constante
                 const duration = totalWidth / scrollSpeed;
 
-                // Define as variáveis CSS que serão usadas pela animação
                 gallery.style.setProperty('--scroll-width', totalWidth + 'px');
                 gallery.style.setProperty('--scroll-duration', duration + 's');
             }
