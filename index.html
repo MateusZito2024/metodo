@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroSintonia - Restaure seu Casamento</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '607759531347789'); // ID do Pixel que estava no seu código
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=607759531347789&ev=PageView&noscript=1"
+    /></noscript>
+    <style>
+        :root {
+            --primary-color: #3a3a3a;
+            --accent-green: #8FBC3D;
+            --accent-gold: #7A6E58;
+            --accent-gold-rgba: rgba(122, 110, 88, 0.5); 
+            --bg-light: #f7f7f7;
+            --white: #FFFFFF;
+            --text-light: #555;
+            --shadow: rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F3F7;
+            color: var(--primary-color);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: text-shadow 0.35s ease-in-out;
+        }
+
+        .section-title:hover {
+            text-shadow: 0 0 10px var(--accent-gold-rgba);
+        }
+
+        .section-subtitle {
+            font-size: 1.1em;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        /* --- Seção Herói (Abertura) --- */
+        .hero {
+            padding: 60px 0;
+            background-color: #F5F3F7;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-text {
+            max-width: 500px;
+            animation: slideInFromLeft 1s ease-out;
+        }
+        
+        /* ESTILOS PARA O ROTATOR DE TEXTO (SOLUÇÃO COM CSS GRID) */
+        #text-rotator {
+            display: grid; /* Usa Grid para layout e altura automática */
+            align-items: start;
+            margin-bottom: 35px;
+        }
+        .hero-text-item {
+            grid-area: 1 / 1; /* Coloca todos os itens na mesma célula, empilhando-os */
+            opacity: 0;
+            visibility: hidden;
+            /* As animações vão controlar a visibilidade e o movimento */
+        }
+        .hero-text-item.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+        .hero-text-item.slide-out {
+            animation: slideOutBlur 0.7s forwards;
+            z-index: 0;
+        }
+        .hero-text-item.slide-in {
+            animation: slideInBlur 0.7s forwards;
+            z-index: 1;
+        }
+        .hero-text-item h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2em;
+            line-height: 1.2;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+        .hero-text-item p {
+            font-size: 1.15em;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+        /* FIM DOS ESTILOS DO ROTATOR */
+        
+        .hero-image-wrapper {
+            max-width: 420px;
+            animation: fadeIn 1.2s ease-out;
+        }
+        .hero-image-wrapper .main-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: var(--white);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(143, 188, 61, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        /* --- Seção Para Quem é (Benefícios) --- */
+        .benefits {
+            background-color: var(--accent-gold);
+        }
+        .benefits .section-title,
+        .benefits .section-subtitle {
+            color: var(--white);
+        }
+        .benefits .section-title:hover {
+             text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        .benefit-card {
+            background: var(--white);
+            padding: 30px;
+            border-left: 5px solid var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 25px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; 
+            overflow: hidden; 
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 1s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            animation: wiggle 0.5s ease;
+        }
+        .benefit-card:hover::before {
+            left: 100%;
+        }
+
+        /* --- Seção Depoimentos --- */
+        .testimonials {
+            background-color: var(--white);
+        }
+        .testimonials-videos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .testimonial-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .testimonial-video:hover {
+            transform: scale(1.03);
+        }
+        .testimonial-video iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+        .testimonial-prints-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .print-card {
+             border-radius: 12px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+        }
+        .print-card img {
+            width: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        .print-card img:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Seção Bônus --- */
+        .bonus {
+            background-color: var(--bg-light);
+        }
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+        .bonus-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+         .bonus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1), 0 0 20px var(--accent-gold-rgba);
+        }
+        .bonus-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .bonus-card .tag {
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .bonus-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        .bonus-card p {
+            font-size: 1em;
+            color: var(--text-light);
+            max-width: 400px;
+            margin-bottom: 30px;
+            flex-grow: 2;
+        }
+        .final-cta {
+            margin-top: 60px;
+        }
+
+        /* --- Seção Mídia --- */
+        .media-section {
+            background-color: var(--accent-gold);
+        }
+        .media-section .section-title, .media-section .section-subtitle {
+            color: var(--white);
+        }
+        .media-section .section-title:hover {
+             text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            grid-auto-rows: 250px;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 75%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-25deg);
+            z-index: 1;
+        }
+        .gallery-item:hover::before {
+            left: 120%;
+            transition: left 0.8s ease-in-out;
+        }
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* --- Seção Sobre --- */
+        .about {
+            background-color: var(--white);
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            text-align: left;
+        }
+        .about-text { flex: 1; }
+        .about-image { flex-basis: 40%; max-width: 400px; }
+        .about-image img { width: 100%; border-radius: 15px; }
+
+        /* --- Seção FAQ (Perguntas Frequentes) --- */
+        .faq-section {
+            background-color: var(--bg-light);
+        }
+        .faq-container {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.15em;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        .faq-question .arrow {
+            font-size: 1.5em;
+            color: var(--accent-gold);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            padding: 0 25px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(135deg);
+        }
+        .faq-item.active .faq-answer {
+            padding: 0px 25px 25px 25px;
+        }
+
+        /* --- Rodapé --- */
+        footer {
+            background-color: #2b2b2b; color: #ccc; padding: 50px 0; text-align: center; font-size: 0.9em;
+        }
+        .footer-container { max-width: 800px; margin: 0 auto; padding: 0 15px; }
+        footer p { margin: 0 0 10px; }
+
+        /* --- Animações e Responsividade --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        
+        @keyframes wiggle {
+            0% { transform: translateY(0) rotate(0); }
+            25% { transform: translateY(-5px) rotate(2deg); }
+            75% { transform: translateY(-5px) rotate(-2deg); }
+            100% { transform: translateY(0) rotate(0); }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(143, 188, 61, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 25px rgba(143, 188, 61, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(143, 188, 61, 0.4);
+            }
+        }
+        
+        /* ANIMAÇÕES PARA O ROTATOR DE TEXTO */
+        @keyframes slideOutBlur {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+                filter: blur(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50px);
+                filter: blur(5px);
+            }
+        }
+        @keyframes slideInBlur {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                filter: blur(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content, .about-content { flex-direction: column-reverse; }
+            .hero-text, .about-content { text-align: center; }
+            .about-text .section-title { text-align: center; }
+            .bonus-grid, .testimonials-videos { grid-template-columns: 1fr; }
+            .gallery { 
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .section { padding: 80px 0; }
+            .section-title { font-size: 2.2em; }
+            .hero-text-item h1 { font-size: 2.5em; }
+            .gallery { 
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .testimonial-prints-grid, .gallery {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="section hero">
+        <div style="position: absolute; top: -50px; right: -80px; width: 800px; height: auto; z-index: 1; transform: scaleX(-1); pointer-events: none; opacity: 0.7;">
+            <img src="https://i.postimg.cc/hGMmVVVt/b0e1a7fb73aac0cd1c6d7086ebefd319-Photoroom.png" alt="" style="width: 100%; height: auto;">
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div id="text-rotator">
+                        <div class="hero-text-item">
+                            <h1>Está passando por uma crise no seu casamento?</h1>
+                            <p>Chega de fazer anos de terapia sem resultados. Eu resolvi o meu casamento em 3 meses e vou te mostrar como resolver o seu caso!</p>
+                        </div>
+                        <div class="hero-text-item">
+                            <h1>Se sente sozinha mesmo estando casada?</h1>
+                            <p>A solidão a dois é uma das dores mais profundas. Existe um caminho para reencontrar a companhia e a cumplicidade.</p>
+                        </div>
+                        <div class="hero-text-item">
+                            <h1>A comunicação com seu parceiro virou um desafio?</h1>
+                            <p>Quando o diálogo acaba, os problemas crescem. Aprenda a restaurar a ponte da comunicação efetiva.</p>
+                        </div>
+                        <div class="hero-text-item">
+                            <h1>Sonha em resgatar a paixão e a conexão do início?</h1>
+                            <p>A chama não precisa se apagar. Descubra como reacender o desejo e a admiração que os uniu.</p>
+                        </div>
+                    </div>
+                    <a href="https://form.jotform.com/240924402831652" class="cta-button">Receba uma Sessão Gratuita</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/mockup-novo-mobile-quem-sou-eu-12.png" alt="Renata David" class="main-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Para quem é a Sessão Experimental?</h2>
+            <p class="section-subtitle">Esta mentoria é para mulheres decididas a dar uma última e verdadeira chance de restaurar sua família e seu casamento.</p>
+            <div class="benefits-grid">
+                <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
+                <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
+                <div class="benefit-card"><span>Para quem passou por uma traição e não sabe o que fazer.</span></div>
+                <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
+                <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
+                <div class="benefit-card"><span>Não quer jogar toda a história e as conquistas da família fora.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Minhas Mentoradas Falam de Mim?</h2>
+            <p class="section-subtitle">Resultados reais de mulheres que transformaram seus casamentos e suas vidas em poucas semanas.</p>
+            <div class="testimonials-videos">
+                <div class="testimonial-video">
+                    <iframe src="https://www.youtube.com/embed/fGBDIpHhIxE" title="Depoimento 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="testimonial-video">
+                    <iframe src="https://www.youtube.com/embed/jshj_BvDxQE" title="Depoimento 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+             <div class="testimonial-prints-grid">
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.02-632x1024.jpeg" alt="Depoimento em texto 1"></div>
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.04-882x1024.jpeg" alt="Depoimento em texto 2"></div>
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.04-2-729x1024.jpeg" alt="Depoimento em texto 3"></div>
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.04-1-622x1024.jpeg" alt="Depoimento em texto 8"></div>
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-1-704x1024.jpeg" alt="Depoimento em texto 4"></div>
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-2-683x1024.jpeg" alt="Depoimento em texto 5"></div>
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-1024x971.jpeg" alt="Depoimento em texto 6"></div>
+                <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-3-1024x523.jpeg" alt="Depoimento em texto 7"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bonus">
+        <div class="container">
+            <h2 class="section-title">Além da Sessão, Receba Dois Presentes Exclusivos!</h2>
+            <p class="section-subtitle">Ao se cadastrar hoje, você garante acesso imediato a estas ferramentas para acelerar sua transformação.</p>
+
+            <div class="bonus-grid">
+                <div class="bonus-card">
+                    <span class="tag">PRESENTE 1</span>
+                    <h3>Podcast Exclusivo</h3>
+                    <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.14.59.jpeg" alt="Podcast Bônus">
+                    <p>Uma gravação única com Renata e seu marido Rafael, onde compartilham os bastidores da jornada de restauração do casamento deles.</p>
+                </div>
+
+                <div class="bonus-card">
+                    <span class="tag">PRESENTE 2</span>
+                    <h3>Desafio "Controle a Ansiedade"</h3>
+                    <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.15.01.jpeg" alt="Desafio Controle a Ansiedade">
+                    <p>Um desafio prático de 7 dias para te ajudar a lidar com as crises de choro e ansiedade, trazendo paz para o seu coração durante o processo.</p>
+                </div>
+            </div>
+
+            <div class="final-cta">
+                <a href="https://form.jotform.com/240924402831652" class="cta-button">Quero Meus Bônus + Sessão Gratuita</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section media-section">
+        <div class="container">
+            <h2 class="section-title">Na Mídia</h2>
+            <p class="section-subtitle">Palestras e entrevistas em programas de TV e Rádio compartilhando o poder da NeuroSintonia.</p>
+            <div class="gallery">
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.35-1024x843.jpeg" alt="Mídia 1"></div>
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.33.jpeg" alt="Mídia 2"></div>
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.34-1-1024x801.jpeg" alt="Mídia 3"></div>
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32.jpeg" alt="Mídia 4"></div>
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.37-972x1024.jpeg" alt="Mídia 5"></div>
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.29.jpeg" alt="Mídia 6"></div>
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32-1.jpeg" alt="Mídia 7"></div>
+                <div class="gallery-item"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.34-859x1024.jpeg" alt="Mídia 8"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left; margin: 0 0 20px 0;">Quem é Renata David?</h2>
+                <p>Renata é <strong>Mentora, Neurocientista, Mestre em Ciências Médicas pela UFRGS, Palestrante e Escritora.</strong> ⚜️</p>
+                <p>Ela descobriu a NeuroSintonia depois de ter tentado todos os outros tipos de terapia para <strong>restaurar o seu casamento com o Rafa e não ter nenhum tipo de resultado.</strong></p>
+                <p>Hoje, usando o conhecimento que ensina, <strong>restaurou a sua família</strong> e vive um casamento incrível e bem sucedido.</p>
+                <p>Já ajudou <strong>CENTENAS</strong> de mulheres a restaurarem seus relacionamentos de forma rápida usando o único método do Brasil que combina a Neurociência com os Princípios Bíblicos.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/mockup-novo-mobile-quem-sou-eu-12-1-1024x1024.png" alt="Foto de Renata David">
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="section-title">Tire Suas Dúvidas</h2>
+            <p class="section-subtitle">Respostas para as perguntas mais comuns sobre a mentoria e o método NeuroSintonia.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O que é a metodologia NeuroSintonia?</span>
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>É um método exclusivo que combina Neurociência e Princípios Bíblicos para reprogramar padrões de pensamento e comportamento, restaurando a conexão e a harmonia no casamento de forma rápida e eficaz.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Qual a diferença para a terapia de casal tradicional?</span>
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Diferente da terapia tradicional, que pode levar anos, o NeuroSintonia foca em ações práticas e na reprogramação da sua mente para gerar resultados visíveis em poucas semanas, sem depender da participação do seu marido no início.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Meu marido precisa participar das sessões?</span>
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! A grande vantagem do método é que ele começa com você. Ao mudar a sua postura e a sua energia através das técnicas, você inspira a mudança no ambiente e no seu parceiro de forma natural, sem a necessidade de convencê-lo a participar.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>A Sessão Experimental é realmente gratuita?</span>
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, totalmente gratuita e sem compromisso. O objetivo é que você conheça o método, receba um direcionamento inicial para o seu caso e decida com clareza se a mentoria completa é o caminho certo para você e sua família.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Isso funciona se já tentamos de tudo?</span>
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Muitas das mulheres que chegam até mim já passaram por diversas terapias sem sucesso. O NeuroSintonia funciona porque aborda a raiz dos problemas de uma forma diferente, focando na sua transformação interna, que é a chave para a mudança externa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>Copyright 2025 – NeuroSintonia. Todos os direitos reservados.</p>
+            <p>Criado e mantido por RENATA MARIANO.</p>
+            <p style="font-size: 0.8em; color: #aaa; margin-top: 20px; line-height: 1.6;">
+                <strong>Disclaimer:</strong> Este site não é afiliado ao Facebook ou qualquer entidade do Facebook. Não vendemos seu e-mail ou qualquer informação. Os resultados aqui mostrados não são típicos e não garantem que você obterá os mesmos. O sucesso depende do seu esforço, dedicação e aplicação dos métodos. Nosso objetivo é compartilhar uma história e um método que podem ajudar, mas o trabalho para restaurar sua família é seu.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // SCRIPT PARA CONTROLAR O FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const currentlyActive = document.querySelector('.faq-item.active');
+                if (currentlyActive && currentlyActive !== item) {
+                    currentlyActive.classList.remove('active');
+                    currentlyActive.querySelector('.faq-answer').style.maxHeight = 0;
+                    currentlyActive.querySelector('.arrow').textContent = '+';
+                }
+
+                item.classList.toggle('active');
+                const answer = item.querySelector('.faq-answer');
+                const arrow = item.querySelector('.arrow');
+
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    arrow.textContent = '−';
+                } else {
+                    answer.style.maxHeight = 0;
+                    arrow.textContent = '+';
+                }
+            });
+        });
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rotator = document.getElementById('text-rotator');
+            if (rotator) {
+                const items = rotator.querySelectorAll('.hero-text-item');
+                if (items.length <= 1) return;
+
+                let currentIndex = 0;
+                const intervalTime = 7000; // 7 segundos
+
+                // Define o primeiro item como ativo no início
+                items[currentIndex].classList.add('active');
+
+                function showNextItem() {
+                    const currentItem = items[currentIndex];
+                    const nextIndex = (currentIndex + 1) % items.length;
+                    const nextItem = items[nextIndex];
+
+                    // Aplica as classes de animação
+                    currentItem.classList.add('slide-out');
+                    nextItem.classList.add('active', 'slide-in');
+
+                    // Limpa as classes do item que saiu após a animação
+                    currentItem.addEventListener('animationend', () => {
+                        currentItem.classList.remove('active', 'slide-out');
+                    }, { once: true });
+                    
+                    // Limpa a classe de animação do item que entrou
+                    nextItem.addEventListener('animationend', () => {
+                        nextItem.classList.remove('slide-in');
+                    }, { once: true });
+
+                    currentIndex = nextIndex;
+                }
+
+                setInterval(showNextItem, intervalTime);
+            }
+        });
+    </script>
+</body>
+</html>
