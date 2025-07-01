@@ -37,6 +37,10 @@
             --shadow: rgba(0, 0, 0, 0.06);
         }
 
+        html {
+            scroll-behavior: smooth; /* Para a rolagem suave dos botões */
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -350,7 +354,7 @@
     <img src="https://i.postimg.cc/WbzDBw5P/1864d717-6b28-49e7-9d8f-d2f6e1017197-Photoroom.png" alt="NeuroSintonia Logo" class="site-logo logo-header">
     
     <main>
-        <section class="section hero">
+        <section id="inscricao" class="section hero">
              <div style="position: absolute; top: -50px; right: -80px; width: 800px; height: auto; z-index: 1; transform: scaleX(-1); pointer-events: none; opacity: 0.7;">
                 <img src="https://i.postimg.cc/hGMmVVVt/b0e1a7fb73aac0cd1c6d7086ebefd319-Photoroom.png" alt="" style="width: 100%; height: auto;">
             </div>
@@ -365,7 +369,7 @@
                                 <li><span class="icon">👍</span> Mais de 5488 Resultados COMPROVADOS cientificamente, 100% GRATUITO!</li>
                             </ul>
                             
-                            <form method="POST" action="https://neurosintonia.activehosted.com/proc.php" id="_form_4_" class="hero-form" novalidate>
+                            <form method="POST" action="https://neurosintonia.activehosted.com/proc.php" id="_form_4_" class="hero-form">
                                 <input type="hidden" name="u" value="4">
                                 <input type="hidden" name="f" value="4">
                                 <input type="hidden" name="s" value="">
@@ -374,19 +378,20 @@
                                 <input type="hidden" name="act" value="sub">
                                 <input type="hidden" name="v" value="2">
                                 <input type="hidden" name="or" value="246816027b4d3f31f9040a7620a2e7c4">
+                                
                                 <input type="hidden" name="redirect" value="https://neurosintonia.com.br/pagina-de-obrigado-webnar/">
-
+                                
                                 <div class="_form-content">
                                     <div class="_form_element">
                                         <label for="fullname">Qual o seu nome?</label>
                                         <div class="_field-wrapper">
-                                            <input type="text" id="fullname" name="fullname" placeholder="Digite aqui" required="">
+                                            <input type="text" id="fullname" name="fullname" placeholder="Digite aqui" required>
                                         </div>
                                     </div>
                                     <div class="_form_element">
                                         <label for="email">Qual seu melhor e-mail?</label>
                                         <div class="_field-wrapper">
-                                            <input type="email" id="email" name="email" placeholder="Digite aqui" required="">
+                                            <input type="email" id="email" name="email" placeholder="Digite aqui" required>
                                         </div>
                                     </div>
                                     <div class="_button-wrapper">
@@ -488,12 +493,11 @@
 
                 <div id="bonus-unlocked-card">
                     <h3>🎉 Parabéns! Você desbloqueou seus brindes! 🎉</h3>
-                    <p>Clique no botão abaixo para garantir seus presentes.</p>
-                    <a href="https://form.jotform.com/240924402831652" class="cta-button">Pegar Meus Presentes Agora!</a>
+                    <a href="#inscricao" class="cta-button">Pegar Meus Presentes Agora!</a>
                 </div>
 
                 <div class="final-cta">
-                    <a href="https://form.jotform.com/240924402831652" class="cta-button">Quero Meus Bônus + Sessão Gratuita</a>
+                    <a href="#inscricao" class="cta-button">Quero Meus Bônus + Sessão Gratuita</a>
                 </div>
             </div>
         </section>
