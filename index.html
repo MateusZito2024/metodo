@@ -200,12 +200,13 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             transition: left 1s ease;
         }
-        .benefit-card:hover {
+        
+        .benefits-grid .benefit-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 35px rgba(0,0,0,0.15);
             animation: wiggle 0.5s ease;
         }
-        .benefit-card:hover::before {
+        .benefits-grid .benefit-card:hover::before {
             left: 100%;
         }
 
@@ -253,7 +254,7 @@
             border-radius: 12px;
             transition: transform 0.3s ease;
         }
-        .print-card img:hover {
+        .testimonial-prints-grid .print-card:hover img {
             transform: scale(1.05);
         }
 
@@ -538,7 +539,9 @@
             }
         }
 
-        /* --- Responsividade --- */
+        /* ================================================== */
+        /* === RESPONSIVIDADE (BASE - DESKTOP PRIMEIRO) === */
+        /* ================================================== */
         @media (max-width: 1100px) {
             .gallery-item {
                 flex-basis: calc(33.333% - 16px);
@@ -551,24 +554,99 @@
             .about-text .section-title { text-align: center; }
             .bonus-grid, .testimonials-videos { grid-template-columns: 1fr; }
         }
+        
+        /* ============================================================== */
+        /* === CSS MOBILE SUPER COMPACTO (A PARTIR DE TABLETS P/ BAIXO) === */
+        /* ============================================================== */
+        
+        .hidden {
+            display: none !important;
+        }
 
         @media (max-width: 768px) {
-            .section { padding: 80px 0; }
-            .section-title { font-size: 2.2em; }
-            .hero-text-item h1 { font-size: 2.5em; }
-            .gallery-item {
-                flex-basis: calc(50% - 16px);
+            .benefits-grid, .testimonial-prints-grid {
+                display: none;
             }
         }
-        @media (max-width: 520px) {
-            .testimonial-prints-grid {
-                grid-template-columns: 1fr;
+        .benefits-carousel-container, .prints-carousel-container {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .benefits-carousel-container, .prints-carousel-container {
+                display: block;
+                position: relative;
+                overflow: hidden;
+                margin-top: 30px;
+                -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+                mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
             }
-            .gallery-item {
-                flex-basis: 90%;
+            .benefits-carousel-track, .prints-carousel-track {
+                display: flex;
+                width: fit-content;
+                animation: scroll var(--scroll-duration, 40s) linear infinite;
+            }
+            .benefits-carousel-container:hover .benefits-carousel-track,
+            .prints-carousel-container:hover .prints-carousel-track {
+                animation-play-state: paused;
+            }
+            .benefits-carousel-track .benefit-card {
+                flex-shrink: 0;
+                flex-basis: 260px;
+                width: 260px;
+                margin: 0 10px;
+                padding: 20px;
+                font-size: 0.9em;
+                min-height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            .prints-carousel-track .print-card {
+                flex-shrink: 0;
+                margin: 0 8px;
+                height: 280px;
+            }
+            .prints-carousel-track .print-card img {
+                height: 100%;
+                width: auto;
             }
         }
 
+
+        @media (max-width: 768px) {
+            
+            body { line-height: 1.6; }
+            .section { padding: 45px 15px; }
+            .section-title { font-size: 1.7em; margin-bottom: 15px; }
+            .section-subtitle { font-size: 0.95em; margin-bottom: 30px; }
+            .cta-button { padding: 14px 28px; font-size: 0.9em; }
+
+            .logo-header { display: none; }
+            .hero { padding-top: 45px; }
+            footer { padding: 25px 0; }
+            .logo-footer { height: 80px; width: auto; margin: -20px auto 15px auto; }
+            footer p { font-size: 0.8em; }
+
+            .hero-image-wrapper { max-width: 65%; }
+            .hero-content { gap: 25px; }
+            .bonus-card img { max-width: 200px; margin-left: auto; margin-right: auto; }
+            .about-image { max-width: 250px; margin: 0 auto; }
+            .gallery-item { height: 150px; flex-basis: calc(50% - 16px); }
+
+            .hero-text-item h1 { font-size: 1.9em; line-height: 1.25; }
+            .hero-text-item p { font-size: 1em; }
+            .bonus-card { padding: 20px; }
+            .bonus-card h3 { font-size: 1.3em; }
+            .bonus-card p { font-size: 0.9em; margin-bottom: 20px; }
+            .faq-question { font-size: 1em; padding: 15px 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            .section { padding: 40px 15px; }
+            .section-title { font-size: 1.6em; }
+            .hero-text-item h1 { font-size: 1.7em; }
+        }
     </style>
 </head>
 <body>
@@ -614,6 +692,7 @@
             <div class="container">
                 <h2 class="section-title">Para quem é a Sessão Experimental?</h2>
                 <p class="section-subtitle">Esta mentoria é para mulheres decididas a dar uma última e verdadeira chance de restaurar sua família e seu casamento.</p>
+                
                 <div class="benefits-grid">
                     <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
                     <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
@@ -621,6 +700,17 @@
                     <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
                     <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
                     <div class="benefit-card"><span>Não quer jogar toda a história e as conquistas da família fora.</span></div>
+                </div>
+
+                <div class="benefits-carousel-container">
+                    <div class="benefits-carousel-track">
+                        <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
+                        <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
+                        <div class="benefit-card"><span>Para quem passou por uma traição e não sabe o que fazer.</span></div>
+                        <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
+                        <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
+                        <div class="benefit-card"><span>Não quer jogar toda a história e as conquistas da família fora.</span></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -637,11 +727,21 @@
                         <iframe src="https://www.youtube.com/embed/jshj_BvDxQE" title="Depoimento 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
+
                  <div class="testimonial-prints-grid">
                     <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.04-1-622x1024.jpeg" alt="Depoimento em texto 1"></div>
                     <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-2-683x1024.jpeg" alt="Depoimento em texto 8"></div>
                     <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.02-632x1024.jpeg" alt="Depoimento em texto 4"></div>
                     <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-1-704x1024.jpeg" alt="Depoimento em texto 5"></div>
+                </div>
+
+                <div class="prints-carousel-container">
+                    <div class="prints-carousel-track">
+                        <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.04-1-622x1024.jpeg" alt="Depoimento em texto 1"></div>
+                        <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-2-683x1024.jpeg" alt="Depoimento em texto 8"></div>
+                        <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.02-632x1024.jpeg" alt="Depoimento em texto 4"></div>
+                        <div class="print-card"><img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-14-at-07.44.03-1-704x1024.jpeg" alt="Depoimento em texto 5"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -669,7 +769,7 @@
                     </div>
                 </div>
 
-                <div id="bonus-unlocked-card" style="display: none;">
+                <div id="bonus-unlocked-card">
                     <h3>🎉 Parabéns! Você desbloqueou seus brindes! 🎉</h3>
                     <p>Clique no botão abaixo para garantir seus presentes.</p>
                     <a href="https://form.jotform.com/240924402831652" class="cta-button">Pegar Meus Presentes Agora!</a>
@@ -680,7 +780,7 @@
                 </div>
             </div>
         </section>
-       
+        
         <section class="section media-section">
             <div class="container">
                 <h2 class="section-title">Na Mídia</h2>
@@ -803,12 +903,51 @@
             }
         });
 
-        // SCRIPT PARA CONTROLAR O CARROSSEL INFINITO DA MÍDIA
+        // SCRIPT PARA INTERAÇÃO DOS BÔNUS
         document.addEventListener('DOMContentLoaded', function() {
-            const gallery = document.querySelector('.gallery');
-            if (gallery) {
-                const track = gallery.querySelector('.gallery-track');
+            const claimButtons = document.querySelectorAll('.bonus-claim-button');
+            const unlockedCard = document.getElementById('bonus-unlocked-card');
+            const finalCTA = document.querySelector('.final-cta');
+            
+            if (unlockedCard) {
+                unlockedCard.classList.add('hidden');
+                unlockedCard.style.display = ''; 
+            }
+            
+            const claimedBonuses = new Set();
+            
+            claimButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    claimedBonuses.add(index);
+                    
+                    button.classList.add('claimed');
+                    button.textContent = '✓ Marcado';
+                    button.disabled = true;
+                    
+                    if (claimedBonuses.size === claimButtons.length) {
+                        if (finalCTA) {
+                            finalCTA.classList.add('hidden');
+                        }
+                        if (unlockedCard) {
+                            unlockedCard.classList.remove('hidden');
+                            unlockedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
+                });
+            });
+        });
+
+        // SCRIPT PARA INICIALIZAR TODOS OS CARROSSEIS
+        document.addEventListener('DOMContentLoaded', function() {
+            function setupCarousel(containerSelector, speedFactor = 60) {
+                const container = document.querySelector(containerSelector);
+                if (!container) return;
+                
+                const track = container.querySelector('div[class$="-track"]');
+                if (!track) return;
+                
                 const items = Array.from(track.children);
+                if (items.length <= 1) return;
 
                 items.forEach(item => {
                     const clone = item.cloneNode(true);
@@ -817,48 +956,24 @@
 
                 let totalWidth = 0;
                 items.forEach(item => {
-                    totalWidth += item.offsetWidth + 16;
+                    const style = window.getComputedStyle(item);
+                    const marginRight = parseInt(style.marginRight, 10) || 0;
+                    const marginLeft = parseInt(style.marginLeft, 10) || 0;
+                    totalWidth += item.offsetWidth + marginLeft + marginRight;
                 });
                 
-                const scrollSpeed = 60; 
-                const duration = totalWidth / scrollSpeed;
+                const duration = totalWidth / speedFactor;
 
-                gallery.style.setProperty('--scroll-width', totalWidth + 'px');
-                gallery.style.setProperty('--scroll-duration', duration + 's');
+                track.style.setProperty('--scroll-width', totalWidth + 'px');
+                track.style.setProperty('--scroll-duration', duration + 's');
             }
-        });
 
-        // SCRIPT PARA INTERAÇÃO DOS BÔNUS
-        document.addEventListener('DOMContentLoaded', function() {
-            const claimButtons = document.querySelectorAll('.bonus-claim-button');
-            const unlockedCard = document.getElementById('bonus-unlocked-card');
-            const finalCTA = document.querySelector('.final-cta');
-            
-            const claimedBonuses = new Set();
-            
-            claimButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    // Adiciona o bônus ao conjunto de bônus resgatados
-                    claimedBonuses.add(index);
-                    
-                    // Atualiza a aparência do botão
-                    button.classList.add('claimed');
-                    button.textContent = '✓ Marcado';
-                    button.disabled = true;
-                    
-                    // Verifica se todos os bônus foram resgatados
-                    if (claimedBonuses.size === claimButtons.length) {
-                        // Esconde o botão de CTA original
-                        if (finalCTA) {
-                            finalCTA.style.display = 'none';
-                        }
-                        
-                        // Mostra o card de parabéns
-                        unlockedCard.style.display = 'block';
-                        unlockedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                });
-            });
+            setupCarousel('.gallery', 60);
+
+            if (window.innerWidth <= 768) {
+                setupCarousel('.benefits-carousel-container', 50); /* << VELOCIDADE AUMENTADA */
+                setupCarousel('.prints-carousel-container', 40);
+            }
         });
     </script>
 
