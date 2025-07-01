@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado! - NeuroSintonia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent-green: #25d366;
+            --white: #FFFFFF;
+            --text-color: #4A4A4A;
+            --headline-color: #d16b24;
+            --background-color: #f7f3ef;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .thank-you-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .thank-you-container .siren-icon {
+            font-size: 3em;
+        }
+
+        .thank-you-container h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.2em;
+            color: var(--headline-color);
+            line-height: 1.2;
+            margin: 10px 0 20px 0;
+            text-transform: uppercase;
+        }
+
+        .thank-you-container p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .thank-you-container p.list-intro {
+            font-weight: 500;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .thank-you-container .benefits-list {
+            list-style-type: none;
+            padding-left: 10px;
+            margin: 0 0 20px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .thank-you-container .benefits-list li {
+            font-size: 1em;
+            margin-bottom: 10px;
+            padding-left: 1.4em;
+            position: relative;
+        }
+
+        .thank-you-container .benefits-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--headline-color);
+            font-weight: 700;
+            font-size: 1.4em;
+            line-height: 1;
+        }
+
+        .thank-you-container .final-benefit {
+            font-size: 1.05em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            width: 100%;
+            background: var(--accent-green);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-sizing: border-box;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-button:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+        }
+        
+        /* VERSÃO MOBILE SUPER COMPACTA */
+        @media (max-width: 600px) {
+            .thank-you-container {
+                padding: 25px 15px;
+            }
+            .thank-you-container h1 {
+                font-size: 1.5em; /* Reduzido */
+                margin-bottom: 15px;
+            }
+            .thank-you-container p {
+                font-size: 0.95em; /* Reduzido */
+                margin-bottom: 15px;
+            }
+            .thank-you-container p.list-intro {
+                font-size: 1em;
+            }
+            .thank-you-container .benefits-list {
+                margin-bottom: 15px;
+            }
+            .thank-you-container .benefits-list li {
+                font-size: 0.9em; /* Reduzido */
+                margin-bottom: 8px;
+            }
+            .thank-you-container .final-benefit {
+                font-size: 0.9em;
+                margin-top: 15px;
+            }
+            .whatsapp-button {
+                font-size: 1em; /* Reduzido */
+                padding: 16px; /* Reduzido */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thank-you-container">
+        <span class="siren-icon">🚨</span>
+        <h1>Falta o último e mais importante passo!</h1>
+        <p>Você acabou de dar o primeiro passo pra restaurar seu casamento.</p>
+        <p>Mas sem entrar no grupo do WhatsApp... <strong>você não vai receber nada.</strong></p>
+        
+        <p class="list-intro">📲 É lá dentro que você vai:</p>
+        <ul class="benefits-list">
+            <li>Receber os <strong>materiais secretos</strong> que ativam a reconexão emocional</li>
+            <li>Ter <strong>acesso antecipado</strong> à aula gratuita</li>
+            <li>Participar das <strong>orientações</strong> que já mudaram a vida de milhares de mulheres</li>
+            <li>Terá o seu caso <strong>DIAGNOSTICADO GRATUITAMENTE</strong> na quarta feira!</li>
+        </ul>
+        <p class="final-benefit">💡 Sua transformação começa ali dentro. <strong>Não deixe pra depois.</strong></p>
+        
+        <a href="https://chat.whatsapp.com/DcOqkyZ1w1HAddEIEsOAfY?utm_source=organic&utm_campaign=&utm_medium=&utm_content=&utm_term=&xcod=&sck=" class="whatsapp-button">Toque aqui para entrar no grupo</a>
+    </div>
+
+</body>
+</html>
