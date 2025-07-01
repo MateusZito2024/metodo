@@ -625,8 +625,7 @@
             .logo-header { display: none; }
             .hero { padding-top: 45px; }
             footer { padding: 25px 0; }
-            .logo-footer { height: 80px; width: auto; margin: -20px auto 15px auto; }
-            footer p { font-size: 0.8em; }
+            .logo-footer { display: none; } /* AJUSTE FINAL: Logo do rodapé oculta */
 
             .hero-image-wrapper { max-width: 65%; }
             .hero-content { gap: 25px; }
@@ -639,6 +638,12 @@
             .bonus-card { padding: 20px; }
             .bonus-card h3 { font-size: 1.3em; }
             .bonus-card p { font-size: 0.9em; margin-bottom: 20px; }
+            
+            /* AJUSTE FINAL: Título "Quem é Renata David?" centralizado */
+            .about-content .section-title {
+                text-align: center !important;
+            }
+            
             .faq-question { font-size: 1em; padding: 15px 20px; }
         }
         
@@ -971,7 +976,7 @@
             setupCarousel('.gallery', 60);
 
             if (window.innerWidth <= 768) {
-                setupCarousel('.benefits-carousel-container', 50); /* << VELOCIDADE AUMENTADA */
+                setupCarousel('.benefits-carousel-container', 50);
                 setupCarousel('.prints-carousel-container', 40);
             }
         });
