@@ -311,9 +311,52 @@
             margin-bottom: 30px;
             flex-grow: 2;
         }
+        .bonus-claim-button {
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            margin-top: auto; /* Empurra o botão para o final do card */
+            transition: all 0.3s ease;
+        }
+        .bonus-claim-button:hover {
+            background-color: #5e5545;
+            transform: scale(1.05);
+        }
+        .bonus-claim-button.claimed {
+            background-color: var(--accent-green);
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+        .bonus-unlocked-card {
+            background: linear-gradient(135deg, var(--accent-gold), #5e5545);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 80px auto 0;
+            max-width: 650px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            text-align: center;
+            animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .bonus-unlocked-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            margin: 0 0 15px 0;
+        }
+        .bonus-unlocked-card p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
         .final-cta {
             margin-top: 60px;
         }
+        
 
         /* --- ANIMAÇÃO DO CARROSSEL --- */
         @keyframes scroll {
@@ -444,7 +487,7 @@
         /* --- ESTILOS DAS LOGOS --- */
         .site-logo {
             position: absolute;
-            z-index: 1000; /* Garante que fique sobre outros elementos */
+            z-index: 1000;
         }
         .logo-header {
             top: -20px;
@@ -452,7 +495,7 @@
             height: 150px;
         }
         .logo-footer {
-            top: -5px; /* Alinha com o padding do rodapé */
+            top: -5px;
             left: 20px;
             height: 150px;
         }
@@ -483,6 +526,16 @@
         @keyframes slideInBlur {
             from { opacity: 0; transform: translateX(50px); filter: blur(5px); }
             to { opacity: 1; transform: translateX(0); filter: blur(0); }
+        }
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* --- Responsividade --- */
@@ -563,7 +616,7 @@
                 <p class="section-subtitle">Esta mentoria é para mulheres decididas a dar uma última e verdadeira chance de restaurar sua família e seu casamento.</p>
                 <div class="benefits-grid">
                     <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
-                    <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixou o casamento de lado.</span></div>
+                    <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
                     <div class="benefit-card"><span>Para quem passou por uma traição e não sabe o que fazer.</span></div>
                     <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
                     <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
@@ -597,20 +650,31 @@
             <div class="container">
                 <h2 class="section-title">Além da Sessão, Receba Dois Presentes Exclusivos!</h2>
                 <p class="section-subtitle">Ao se cadastrar hoje, você garante acesso imediato a estas ferramentas para acelerar sua transformação.</p>
+
                 <div class="bonus-grid">
                     <div class="bonus-card">
                         <span class="tag">PRESENTE 1</span>
                         <h3>Podcast Exclusivo</h3>
                         <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.14.59.jpeg" alt="Podcast Bônus">
                         <p>Uma gravação única com Renata e seu marido Rafael, onde compartilham os bastidores da jornada de restauração do casamento deles.</p>
+                        <button class="bonus-claim-button">Eu quero</button>
                     </div>
+
                     <div class="bonus-card">
                         <span class="tag">PRESENTE 2</span>
                         <h3>Desafio "Controle a Ansiedade"</h3>
                         <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-13-at-14.15.01.jpeg" alt="Desafio Controle a Ansiedade">
                         <p>Um desafio prático de 7 dias para te ajudar a lidar com as crises de choro e ansiedade, trazendo paz para o seu coração durante o processo.</p>
+                        <button class="bonus-claim-button">Eu quero</button>
                     </div>
                 </div>
+
+                <div id="bonus-unlocked-card" style="display: none;">
+                    <h3>🎉 Parabéns! Você desbloqueou seus brindes! 🎉</h3>
+                    <p>Clique no botão abaixo para garantir seus presentes.</p>
+                    <a href="https://form.jotform.com/240924402831652" class="cta-button">Pegar Meus Presentes Agora!</a>
+                </div>
+
                 <div class="final-cta">
                     <a href="https://form.jotform.com/240924402831652" class="cta-button">Quero Meus Bônus + Sessão Gratuita</a>
                 </div>
@@ -685,6 +749,7 @@
         <img src="https://i.postimg.cc/WbzDBw5P/1864d717-6b28-49e7-9d8f-d2f6e1017197-Photoroom.png" alt="NeuroSintonia Logo" class="site-logo logo-footer">
         <div class="footer-container">
             <p>Copyright 2025 – NeuroSintonia. Todos os direitos reservados.</p>
+            <p>Criado e mantido por RENATA MARIANO.</p>
             <p style="font-size: 0.8em; color: #aaa; margin-top: 20px; line-height: 1.6;">
                 <strong>Disclaimer:</strong> Este site não é afiliado ao Facebook ou qualquer entidade do Facebook. Não vendemos seu e-mail ou qualquer informação. Os resultados aqui mostrados não são típicos e não garantem que você obterá os mesmos. O sucesso depende do seu esforço, dedicação e aplicação dos métodos. Nosso objetivo é compartilhar uma história e um método que podem ajudar, mas o trabalho para restaurar sua família é seu.
             </p>
@@ -762,6 +827,39 @@
                 gallery.style.setProperty('--scroll-width', totalWidth + 'px');
                 gallery.style.setProperty('--scroll-duration', duration + 's');
             }
+        });
+
+        // SCRIPT PARA INTERAÇÃO DOS BÔNUS
+        document.addEventListener('DOMContentLoaded', function() {
+            const claimButtons = document.querySelectorAll('.bonus-claim-button');
+            const unlockedCard = document.getElementById('bonus-unlocked-card');
+            const finalCTA = document.querySelector('.final-cta');
+            
+            const claimedBonuses = new Set();
+            
+            claimButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    // Adiciona o bônus ao conjunto de bônus resgatados
+                    claimedBonuses.add(index);
+                    
+                    // Atualiza a aparência do botão
+                    button.classList.add('claimed');
+                    button.textContent = '✓ Marcado';
+                    button.disabled = true;
+                    
+                    // Verifica se todos os bônus foram resgatados
+                    if (claimedBonuses.size === claimButtons.length) {
+                        // Esconde o botão de CTA original
+                        if (finalCTA) {
+                            finalCTA.style.display = 'none';
+                        }
+                        
+                        // Mostra o card de parabéns
+                        unlockedCard.style.display = 'block';
+                        unlockedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+            });
         });
     </script>
 
