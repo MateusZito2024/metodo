@@ -28,9 +28,9 @@
     <style>
         :root {
             --primary-color: #3a3a3a;
-            --accent-green: #8FBC3D;
+            --accent-green: #32ab4c;
+            --accent-orange: #f5a623;
             --accent-gold: #7A6E58;
-            --accent-gold-rgba: rgba(122, 110, 88, 0.5); 
             --bg-light: #f7f7f7;
             --white: #FFFFFF;
             --text-light: #555;
@@ -68,17 +68,6 @@
             transition: text-shadow 0.35s ease-in-out;
         }
 
-        .section-title:hover {
-            text-shadow: 0 0 10px var(--accent-gold-rgba);
-        }
-
-        .section-subtitle {
-            font-size: 1.1em;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
         /* --- Seção Herói (Abertura) --- */
         .hero {
             padding: 60px 0;
@@ -95,562 +84,265 @@
         }
         .hero-text {
             max-width: 500px;
-            animation: slideInFromLeft 1s ease-out;
-        }
-        
-        #text-rotator {
-            display: grid;
-            align-items: start;
-            margin-bottom: 35px;
-        }
-        .hero-text-item {
-            grid-area: 1 / 1;
-            opacity: 0;
-            visibility: hidden;
-        }
-        .hero-text-item.active {
-            opacity: 1;
-            visibility: visible;
-            z-index: 1;
-        }
-        .hero-text-item.slide-out {
-            animation: slideOutBlur 0.7s forwards;
-            z-index: 0;
-        }
-        .hero-text-item.slide-in {
-            animation: slideInBlur 0.7s forwards;
-            z-index: 1;
-        }
-        .hero-text-item h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2em;
-            line-height: 1.2;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-        }
-        .hero-text-item p {
-            font-size: 1.15em;
-            color: var(--text-light);
-            margin-bottom: 0;
+            width: 100%;
         }
         
         .hero-image-wrapper {
             max-width: 420px;
-            animation: fadeIn 1.2s ease-out;
         }
         .hero-image-wrapper .main-img {
             width: 100%;
             height: auto;
             object-fit: cover;
         }
+        
+        /* === ESTILOS DE ALTÍSSIMA FIDELIDADE PARA O FORMULÁRIO (VERSÃO FINAL COMPACTA) === */
+        .hero-form-container {
+            background: var(--white);
+            padding: 25px 30px; 
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .hero-form-container h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9em; 
+            font-weight: 700;
+            line-height: 1.25; 
+            color: #c98a40;
+            margin-top: 0;
+            margin-bottom: 12px; 
+            text-align: left;
+        }
+        .hero-form-container h1 span {
+            color: #444;
+        }
+        .hero-form-container .subheadline {
+            font-size: 1.0em; 
+            color: var(--text-light);
+            margin-bottom: 15px; 
+            text-align: left;
+            line-height: 1.5;
+        }
+        .hero-form-container .subheadline strong {
+            color: #c98a40;
+            font-weight: 700;
+        }
+        .hero-form-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 18px 0; 
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 8px; 
+        }
+        .hero-form-container li {
+            font-weight: 500;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em; 
+        }
+        .hero-form-container li .icon {
+            font-size: 1.2em;
+            line-height: 1;
+        }
+        .hero-form ._form_element {
+            width: 100%;
+            margin-bottom: 10px; 
+            text-align: left;
+        }
+        .hero-form label {
+            display: block;
+            margin-bottom: 5px; 
+            font-weight: 600;
+            font-size: 0.8em; 
+            color: #555;
+        }
+        .hero-form ._field-wrapper input {
+            width: 100%;
+            padding: 10px 12px; 
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        .hero-form ._field-wrapper input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        .hero-form ._button-wrapper button {
+            width: 100%;
+            background-color: var(--accent-green);
+            color: var(--white);
+            padding: 12px; 
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.0em; 
+            text-transform: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(50, 171, 76, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .hero-form ._button-wrapper button:hover {
+            background-color: #2c9443;
+            transform: translateY(-2px);
+        }
+        .hero-form ._form-branding {
+            display: none;
+        }
 
+        /* --- ESTILO RESTAURADO PARA BOTÕES CTA PADRÃO --- */
         .cta-button {
             display: inline-block;
             background-color: var(--accent-green);
             color: var(--white);
-            padding: 18px 40px;
+            padding: 16px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1em;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(143, 188, 61, 0.4);
+            box-shadow: 0 4px 15px rgba(50, 171, 76, 0.4);
             animation: pulse 2s infinite;
-        }
-
-        /* --- Seção Para Quem é (Benefícios) --- */
-        .benefits {
-            background-color: var(--accent-gold);
-        }
-        .benefits .section-title,
-        .benefits .section-subtitle {
-            color: var(--white);
-        }
-        .benefits .section-title:hover {
-             text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            text-align: left;
-        }
-        .benefit-card {
-            background: var(--white);
-            padding: 30px;
-            border-left: 5px solid var(--accent-green);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 5px 25px var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative; 
-            overflow: hidden; 
-        }
-        
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 1s ease;
-        }
-        
-        .benefits-grid .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-            animation: wiggle 0.5s ease;
-        }
-        .benefits-grid .benefit-card:hover::before {
-            left: 100%;
-        }
-
-        /* --- Seção Depoimentos --- */
-        .testimonials {
-            background-color: var(--white);
-        }
-        .testimonials-videos {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-        .testimonial-video {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-        .testimonial-video:hover {
-            transform: scale(1.03);
-        }
-        .testimonial-video iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
-        .testimonial-prints-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-        .print-card {
-             border-radius: 12px;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-        }
-        .print-card img {
-            width: 100%;
-            object-fit: contain;
-            display: block;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-        .testimonial-prints-grid .print-card:hover img {
-            transform: scale(1.05);
-        }
-
-        /* --- Seção Bônus --- */
-        .bonus {
-            background-color: var(--bg-light);
-        }
-        .bonus-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: stretch;
-        }
-        .bonus-card {
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-         .bonus-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.1), 0 0 20px var(--accent-gold-rgba);
-        }
-        .bonus-card img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 25px;
-        }
-        .bonus-card .tag {
-            background: var(--accent-gold);
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9em;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        .bonus-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-        .bonus-card p {
-            font-size: 1em;
-            color: var(--text-light);
-            max-width: 400px;
-            margin-bottom: 30px;
-            flex-grow: 2;
-        }
-        .bonus-claim-button {
-            background: var(--accent-gold);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 25px;
             border: none;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1em;
-            margin-top: auto; /* Empurra o botão para o final do card */
-            transition: all 0.3s ease;
-        }
-        .bonus-claim-button:hover {
-            background-color: #5e5545;
-            transform: scale(1.05);
-        }
-        .bonus-claim-button.claimed {
-            background-color: var(--accent-green);
-            cursor: not-allowed;
-            transform: scale(1);
-        }
-        .bonus-unlocked-card {
-            background: linear-gradient(135deg, var(--accent-gold), #5e5545);
-            color: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            margin: 80px auto 0;
-            max-width: 650px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            text-align: center;
-            animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-        .bonus-unlocked-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2em;
-            margin: 0 0 15px 0;
-        }
-        .bonus-unlocked-card p {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        .final-cta {
-            margin-top: 60px;
-        }
-        
-
-        /* --- ANIMAÇÃO DO CARROSSEL --- */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX( calc(-1 * var(--scroll-width)) ); }
         }
 
-        /* --- Seção Mídia (CARROSSEL) --- */
-        .media-section {
-            background-color: var(--accent-gold);
-        }
-        .media-section .section-title, .media-section .section-subtitle {
-            color: var(--white);
-        }
-        .media-section .section-title:hover {
-             text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
-        }
-        .gallery {
-            position: relative;
-            overflow: hidden;
-            margin-top: 40px;
-            -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-            mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-        }
-        .gallery-track {
-            display: flex;
-            width: fit-content;
-            animation: scroll var(--scroll-duration, 40s) linear infinite;
-        }
-        .gallery:hover .gallery-track {
-            animation-play-state: paused;
-        }
-        .gallery-item {
-            height: 250px;
-            flex-shrink: 0;
-            flex-basis: calc(25% - 16px);
-            margin: 0 8px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-        .gallery-item:hover {
-            transform: scale(1.05);
-            z-index: 10;
-        }
-        .gallery-item img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        
-        /* --- Seção Sobre --- */
-        .about {
-            background-color: var(--white);
-        }
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            text-align: left;
-        }
+        /* O restante do seu CSS continua aqui... */
+        .benefits { background-color: var(--accent-gold); }
+        .benefits .section-title, .benefits .section-subtitle { color: var(--white); }
+        .benefits .section-title:hover { text-shadow: 0 0 12px rgba(255, 255, 255, 0.6); }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; text-align: left; }
+        .benefit-card { background: var(--white); padding: 30px; border-left: 5px solid #8FBC3D; display: flex; align-items: center; gap: 20px; box-shadow: 0 5px 25px var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; }
+        .benefit-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); transition: left 1s ease; }
+        .benefits-grid .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.15); animation: wiggle 0.5s ease; }
+        .benefits-grid .benefit-card:hover::before { left: 100%; }
+        .testimonials { background-color: var(--white); }
+        .testimonials-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; margin-bottom: 60px; }
+        .testimonial-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15); transition: transform 0.3s ease; }
+        .testimonial-video:hover { transform: scale(1.03); }
+        .testimonial-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .testimonial-prints-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .print-card { border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .print-card img { width: 100%; object-fit: contain; display: block; border-radius: 12px; transition: transform 0.3s ease; }
+        .testimonial-prints-grid .print-card:hover img { transform: scale(1.05); }
+        .bonus { background-color: var(--bg-light); }
+        .bonus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+        .bonus-card { background: var(--white); border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: center; padding: 30px; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .bonus-card:hover { transform: translateY(-10px); box-shadow: 0 12px 25px rgba(0,0,0,0.1), 0 0 20px var(--accent-gold-rgba); }
+        .bonus-card img { width: 100%; border-radius: 10px; margin-bottom: 25px; }
+        .bonus-card .tag { background: var(--accent-gold); color: var(--white); padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 0.9em; display: inline-block; margin-bottom: 15px; }
+        .bonus-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8em; color: var(--primary-color); margin-top: 0; margin-bottom: 15px; flex-grow: 1; }
+        .bonus-card p { font-size: 1em; color: var(--text-light); max-width: 400px; margin-bottom: 30px; flex-grow: 2; }
+        .bonus-claim-button { background: var(--accent-gold); color: var(--white); padding: 12px 30px; border-radius: 25px; border: none; cursor: pointer; font-weight: bold; font-size: 1em; margin-top: auto; transition: all 0.3s ease; }
+        .bonus-claim-button:hover { background-color: #5e5545; transform: scale(1.05); }
+        .bonus-claim-button.claimed { background-color: #8FBC3D; cursor: not-allowed; transform: scale(1); }
+        .bonus-unlocked-card { background: linear-gradient(135deg, var(--accent-gold), #5e5545); color: var(--white); padding: 40px; border-radius: 20px; margin: 80px auto 0; max-width: 650px; box-shadow: 0 10px 40px rgba(0,0,0,0.25); text-align: center; animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        .bonus-unlocked-card h3 { font-family: 'Playfair Display', serif; font-size: 2.2em; margin: 0 0 15px 0; }
+        .bonus-unlocked-card p { font-size: 1.1em; margin-bottom: 30px; opacity: 0.9; }
+        .final-cta { margin-top: 60px; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX( calc(-1 * var(--scroll-width)) ); } }
+        .media-section { background-color: var(--accent-gold); }
+        .media-section .section-title, .media-section .section-subtitle { color: var(--white); }
+        .media-section .section-title:hover { text-shadow: 0 0 12px rgba(255, 255, 255, 0.6); }
+        .gallery { position: relative; overflow: hidden; margin-top: 40px; -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); }
+        .gallery-track { display: flex; width: fit-content; animation: scroll var(--scroll-duration, 40s) linear infinite; }
+        .gallery:hover .gallery-track { animation-play-state: paused; }
+        .gallery-item { height: 250px; flex-shrink: 0; flex-basis: calc(25% - 16px); margin: 0 8px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.05); z-index: 10; }
+        .gallery-item img { height: 100%; width: 100%; object-fit: cover; border-radius: 10px; }
+        .about { background-color: var(--white); }
+        .about-content { display: flex; align-items: center; gap: 50px; text-align: left; }
         .about-text { flex: 1; }
         .about-image { flex-basis: 40%; max-width: 400px; }
         .about-image img { width: 100%; border-radius: 15px; }
-
-        /* --- Seção FAQ (Perguntas Frequentes) --- */
-        .faq-section {
-            background-color: var(--bg-light);
-        }
-        .faq-container {
-            max-width: 850px;
-            margin: 0 auto;
-            text-align: left;
-        }
-        .faq-item {
-            background-color: var(--white);
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .faq-question {
-            padding: 20px 25px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.15em;
-            font-weight: 500;
-        }
-        .faq-question .arrow {
-            font-size: 1.5em;
-            color: var(--accent-gold);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-            padding: 0 25px;
-            color: var(--text-light);
-        }
-        .faq-item.active .faq-question .arrow {
-            transform: rotate(135deg);
-        }
-        .faq-item.active .faq-answer {
-            padding: 0px 25px 25px 25px;
-        }
-
-        /* --- Rodapé --- */
-        footer {
-            background-color: #2b2b2b; 
-            color: #ccc; 
-            padding: 50px 0; 
-            text-align: center; 
-            font-size: 0.9em;
-            position: relative;
-        }
-        .footer-container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 0 15px; 
-        }
-        footer p { 
-            margin: 0 0 10px; 
-        }
-        
-        /* --- ESTILOS DAS LOGOS --- */
-        .site-logo {
-            position: absolute;
-            z-index: 1000;
-        }
-        .logo-header {
-            top: -20px;
-            left: 50px;
-            height: 150px;
-        }
-        .logo-footer {
-            top: -5px;
-            left: 20px;
-            height: 150px;
-        }
-
+        .faq-section { background-color: var(--bg-light); }
+        .faq-container { max-width: 850px; margin: 0 auto; text-align: left; }
+        .faq-item { background-color: var(--white); margin-bottom: 15px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .faq-question { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.15em; font-weight: 500; }
+        .faq-question .arrow { font-size: 1.5em; color: var(--accent-gold); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; padding: 0 25px; color: var(--text-light); }
+        .faq-item.active .faq-question .arrow { transform: rotate(135deg); }
+        .faq-item.active .faq-answer { padding: 0px 25px 25px 25px; }
+        footer { background-color: #2b2b2b; color: #ccc; padding: 50px 0; text-align: center; font-size: 0.9em; position: relative; }
+        .footer-container { max-width: 800px; margin: 0 auto; padding: 0 15px; }
+        footer p { margin: 0 0 10px; }
+        .site-logo { position: absolute; z-index: 1000; }
+        .logo-header { top: -20px; left: 50px; height: 150px; }
+        .logo-footer { top: -5px; left: 20px; height: 150px; }
 
         /* --- Animações --- */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes wiggle {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            25% { transform: translateY(-5px) rotate(2deg); }
-            75% { transform: translateY(-5px) rotate(-2deg); }
-        }
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 4px 15px rgba(143, 188, 61, 0.4);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 8px 25px rgba(143, 188, 61, 0.6);
-            }
-        }
-        @keyframes slideOutBlur {
-            from { opacity: 1; transform: translateX(0); filter: blur(0); }
-            to { opacity: 0; transform: translateX(-50px); filter: blur(5px); }
-        }
-        @keyframes slideInBlur {
-            from { opacity: 0; transform: translateX(50px); filter: blur(5px); }
-            to { opacity: 1; transform: translateX(0); filter: blur(0); }
-        }
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
+        @keyframes wiggle { 0%, 100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-5px) rotate(2deg); } 75% { transform: translateY(-5px) rotate(-2deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(50, 171, 76, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(50, 171, 76, 0.6); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        
         /* ================================================== */
         /* === RESPONSIVIDADE (BASE - DESKTOP PRIMEIRO) === */
         /* ================================================== */
-        @media (max-width: 1100px) {
-            .gallery-item {
-                flex-basis: calc(33.333% - 16px);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero-content, .about-content { flex-direction: column-reverse; }
-            .hero-text, .about-content { text-align: center; }
-            .about-text .section-title { text-align: center; }
-            .bonus-grid, .testimonials-videos { grid-template-columns: 1fr; }
+        @media (max-width: 1100px) { .gallery-item { flex-basis: calc(33.333% - 16px); } }
+        @media (max-width: 992px) { 
+            .hero-content, .about-content { flex-direction: column-reverse; } 
+            .hero-text, .about-content { text-align: center; } 
+            .about-text .section-title { text-align: center; } 
+            .bonus-grid, .testimonials-videos { grid-template-columns: 1fr; } 
+            .hero-image-wrapper { display: none; } /* AJUSTE FINAL: Imagem some no mobile/tablet */
         }
         
         /* ============================================================== */
         /* === CSS MOBILE SUPER COMPACTO (A PARTIR DE TABLETS P/ BAIXO) === */
         /* ============================================================== */
-        
-        .hidden {
-            display: none !important;
+        .hidden { display: none !important; }
+        @media (max-width: 768px) { .benefits-grid, .testimonial-prints-grid { display: none; } }
+        .benefits-carousel-container, .prints-carousel-container { display: none; }
+        @media (max-width: 768px) {
+            .benefits-carousel-container, .prints-carousel-container { display: block; position: relative; overflow: hidden; margin-top: 30px; -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); }
+            .benefits-carousel-track, .prints-carousel-track { display: flex; width: fit-content; animation: scroll var(--scroll-duration, 40s) linear infinite; }
+            .benefits-carousel-container:hover .benefits-carousel-track, .prints-carousel-container:hover .prints-carousel-track { animation-play-state: paused; }
+            .benefits-carousel-track .benefit-card { flex-shrink: 0; flex-basis: 260px; width: 260px; margin: 0 10px; padding: 20px; font-size: 0.9em; min-height: auto; display: flex; align-items: center; justify-content: center; text-align: center; }
+            .prints-carousel-track .print-card { flex-shrink: 0; margin: 0 8px; height: 280px; }
+            .prints-carousel-track .print-card img { height: 100%; width: auto; }
         }
 
         @media (max-width: 768px) {
-            .benefits-grid, .testimonial-prints-grid {
-                display: none;
-            }
-        }
-        .benefits-carousel-container, .prints-carousel-container {
-            display: none;
-        }
-        @media (max-width: 768px) {
-            .benefits-carousel-container, .prints-carousel-container {
-                display: block;
-                position: relative;
-                overflow: hidden;
-                margin-top: 30px;
-                -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-                mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-            }
-            .benefits-carousel-track, .prints-carousel-track {
-                display: flex;
-                width: fit-content;
-                animation: scroll var(--scroll-duration, 40s) linear infinite;
-            }
-            .benefits-carousel-container:hover .benefits-carousel-track,
-            .prints-carousel-container:hover .prints-carousel-track {
-                animation-play-state: paused;
-            }
-            .benefits-carousel-track .benefit-card {
-                flex-shrink: 0;
-                flex-basis: 260px;
-                width: 260px;
-                margin: 0 10px;
-                padding: 20px;
-                font-size: 0.9em;
-                min-height: auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-            .prints-carousel-track .print-card {
-                flex-shrink: 0;
-                margin: 0 8px;
-                height: 280px;
-            }
-            .prints-carousel-track .print-card img {
-                height: 100%;
-                width: auto;
-            }
-        }
-
-
-        @media (max-width: 768px) {
-            
             body { line-height: 1.6; }
             .section { padding: 45px 15px; }
             .section-title { font-size: 1.7em; margin-bottom: 15px; }
             .section-subtitle { font-size: 0.95em; margin-bottom: 30px; }
-            .cta-button { padding: 14px 28px; font-size: 0.9em; }
-
             .logo-header { display: none; }
             .hero { padding-top: 45px; }
             footer { padding: 25px 0; }
-            .logo-footer { display: none; } /* AJUSTE FINAL: Logo do rodapé oculta */
-
-            .hero-image-wrapper { max-width: 65%; }
+            .logo-footer { display: none; }
             .hero-content { gap: 25px; }
+            .hero-form-container { padding: 20px; }
+            .hero-form-container h1 { font-size: 1.4em; line-height: 1.3; text-align: center; margin-bottom: 10px; }
+            .hero-form-container .subheadline { font-size: 0.85em; text-align: center; line-height: 1.4; margin-bottom: 15px; }
+            .hero-form-container ul { text-align: center; margin-bottom: 15px; gap: 5px; }
+            .hero-form-container li { justify-content: center; text-align: left; font-size: 0.85em; }
+            .hero-form label { display: none; }
+            .hero-form ._form_element { margin-bottom: 8px; }
+            .cta-button { padding: 14px 28px; font-size: 0.9em; }
             .bonus-card img { max-width: 200px; margin-left: auto; margin-right: auto; }
             .about-image { max-width: 250px; margin: 0 auto; }
             .gallery-item { height: 150px; flex-basis: calc(50% - 16px); }
-
-            .hero-text-item h1 { font-size: 1.9em; line-height: 1.25; }
-            .hero-text-item p { font-size: 1em; }
             .bonus-card { padding: 20px; }
             .bonus-card h3 { font-size: 1.3em; }
             .bonus-card p { font-size: 0.9em; margin-bottom: 20px; }
-            
-            /* AJUSTE FINAL: Título "Quem é Renata David?" centralizado */
-            .about-content .section-title {
-                text-align: center !important;
-            }
-            
+            .about-content .section-title { text-align: center !important; }
             .faq-question { font-size: 1em; padding: 15px 20px; }
         }
         
         @media (max-width: 480px) {
             .section { padding: 40px 15px; }
             .section-title { font-size: 1.6em; }
-            .hero-text-item h1 { font-size: 1.7em; }
+            .hero-form-container h1 { font-size: 1.3em; }
         }
     </style>
 </head>
@@ -660,31 +352,50 @@
     
     <main>
         <section class="section hero">
-            <div style="position: absolute; top: -50px; right: -80px; width: 800px; height: auto; z-index: 1; transform: scaleX(-1); pointer-events: none; opacity: 0.7;">
+             <div style="position: absolute; top: -50px; right: -80px; width: 800px; height: auto; z-index: 1; transform: scaleX(-1); pointer-events: none; opacity: 0.7;">
                 <img src="https://i.postimg.cc/hGMmVVVt/b0e1a7fb73aac0cd1c6d7086ebefd319-Photoroom.png" alt="" style="width: 100%; height: auto;">
             </div>
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <div id="text-rotator">
-                            <div class="hero-text-item active">
-                                <h1>Está passando por uma crise no seu casamento?</h1>
-                                <p>Chega de fazer anos de terapia sem resultados. Eu resolvi o meu casamento em 3 meses e vou te mostrar como resolver o seu caso!</p>
-                            </div>
-                            <div class="hero-text-item">
-                                <h1>Se sente sozinha mesmo estando casada?</h1>
-                                <p>A solidão a dois é uma das dores mais profundas. Existe um caminho para reencontrar a companhia e a cumplicidade.</p>
-                            </div>
-                            <div class="hero-text-item">
-                                <h1>A comunicação com seu parceiro virou um desafio?</h1>
-                                <p>Quando o diálogo acaba, os problemas crescem. Aprenda a restaurar a ponte da comunicação efetiva.</p>
-                            </div>
-                            <div class="hero-text-item">
-                                <h1>Sonha em resgatar a paixão e a conexão do início?</h1>
-                                <p>A chama não precisa se apagar. Descubra como reacender o desejo e a admiração que os uniu.</p>
-                            </div>
+                        <div class="hero-form-container">
+                            <h1>Ele ainda pode voltar <span>— mesmo que tenha saído de casa, esteja com outra ou diga que nunca mais vai te amar.</span></h1>
+                            <p class="subheadline">Nesta quarta, às 20h, vou te mostrar <strong>AO VIVO</strong> como restaurar seu casamento em até 30 dias, <strong>sem humilhação, sem correr atrás e sem ele saber.</strong></p>
+                            <ul>
+                                <li><span class="icon">⚛️</span> Aula gratuita, baseada em ciência e na fé. Vagas limitadas.</li>
+                                <li><span class="icon">👍</span> Mais de 5488 Resultados COMPROVADOS cientificamente, 100% GRATUITO!</li>
+                            </ul>
+                            
+                            <form method="POST" action="https://neurosintonia.activehosted.com/proc.php" id="_form_4_" class="hero-form" novalidate>
+                                <input type="hidden" name="u" value="4">
+                                <input type="hidden" name="f" value="4">
+                                <input type="hidden" name="s" value="">
+                                <input type="hidden" name="c" value="0">
+                                <input type="hidden" name="m" value="0">
+                                <input type="hidden" name="act" value="sub">
+                                <input type="hidden" name="v" value="2">
+                                <input type="hidden" name="or" value="246816027b4d3f31f9040a7620a2e7c4">
+                                <div class="_form-content">
+                                    <div class="_form_element">
+                                        <label for="fullname">Qual o seu nome?</label>
+                                        <div class="_field-wrapper">
+                                            <input type="text" id="fullname" name="fullname" placeholder="Digite aqui" required="">
+                                        </div>
+                                    </div>
+                                    <div class="_form_element">
+                                        <label for="email">Qual seu melhor e-mail?</label>
+                                        <div class="_field-wrapper">
+                                            <input type="email" id="email" name="email" placeholder="Digite aqui" required="">
+                                        </div>
+                                    </div>
+                                    <div class="_button-wrapper">
+                                        <button id="_form_4_submit" class="_submit" type="submit">
+                                            Quero Restaurar Meu Casamento Agora!
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <a href="https://form.jotform.com/240924402831652" class="cta-button">Receba uma Sessão Gratuita</a>
                     </div>
                     <div class="hero-image-wrapper">
                         <img src="https://neurosintonia.com.br/wp-content/uploads/2023/09/mockup-novo-mobile-quem-sou-eu-12.png" alt="Renata David" class="main-img">
@@ -700,7 +411,7 @@
                 
                 <div class="benefits-grid">
                     <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
-                    <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixou o casamento de lado.</span></div>
+                    <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
                     <div class="benefit-card"><span>Para quem passou por uma traição e não sabe o que fazer.</span></div>
                     <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
                     <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
@@ -710,7 +421,7 @@
                 <div class="benefits-carousel-container">
                     <div class="benefits-carousel-track">
                         <div class="benefit-card"><span>Para quem faz terapia há anos e não vê o marido mudar.</span></div>
-                        <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixou o casamento de lado.</span></div>
+                        <div class="benefit-card"><span>Para quem dedicou anos para a carreira e deixei o casamento de lado.</span></div>
                         <div class="benefit-card"><span>Para quem passou por uma traição e não sabe o que fazer.</span></div>
                         <div class="benefit-card"><span>Está pensando no divórcio, mas não quer desistir da família.</span></div>
                         <div class="benefit-card"><span>Quer alguém que realmente resolva o seu problema.</span></div>
@@ -884,30 +595,6 @@
             });
         });
         
-        // SCRIPT PARA CONTROLAR O ROTATOR DE TEXTO
-        document.addEventListener('DOMContentLoaded', function() {
-            const rotator = document.getElementById('text-rotator');
-            if (rotator) {
-                const items = rotator.querySelectorAll('.hero-text-item');
-                if (items.length > 1) {
-                    let currentIndex = 0;
-                    setInterval(() => {
-                        const currentItem = items[currentIndex];
-                        const nextIndex = (currentIndex + 1) % items.length;
-                        const nextItem = items[nextIndex];
-
-                        currentItem.classList.add('slide-out');
-                        nextItem.classList.add('active', 'slide-in');
-
-                        currentItem.addEventListener('animationend', () => currentItem.classList.remove('active', 'slide-out'), { once: true });
-                        nextItem.addEventListener('animationend', () => nextItem.classList.remove('slide-in'), { once: true });
-
-                        currentIndex = nextIndex;
-                    }, 7000);
-                }
-            }
-        });
-
         // SCRIPT PARA INTERAÇÃO DOS BÔNUS
         document.addEventListener('DOMContentLoaded', function() {
             const claimButtons = document.querySelectorAll('.bonus-claim-button');
