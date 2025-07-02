@@ -193,15 +193,14 @@
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(50, 171, 76, 0.3);
             transition: background-color 0.3s ease, transform 0.2s ease;
-            animation: pulsate-button 2s infinite;
         }
         .hero-form ._button-wrapper button:hover {
             background-color: #2c9443;
             transform: translateY(-2px);
-            animation-play-state: paused;
         }
-        .hero-form ._form-branding {
-            display: none;
+        .hero-form ._button-wrapper button:disabled {
+            background-color: #9e9e9e;
+            cursor: not-allowed;
         }
 
         /* --- ESTILO PARA BOTÕES CTA PADRÃO --- */
@@ -339,7 +338,7 @@
         @media (max-width: 480px) {
             .section { padding: 40px 15px; }
             .section-title { font-size: 1.6em; }
-            .hero-form-container h1 { font-size: 1.9em; }
+            .hero-form-container h1 { font-size: 1.5em; }
         }
     </style>
 </head>
@@ -363,7 +362,7 @@
                                 <li><span class="icon">👍</span> Mais de 5488 Resultados COMPROVADOS cientificamente, 100% GRATUITO!</li>
                             </ul>
                             
-                            <form method="POST" action="https://neurosintonia.activehosted.com/proc.php" id="_form_4_" class="hero-form">
+                            <form method="POST" action="https://neurosintonia.activehosted.com/proc.php" id="main-form" class="hero-form">
                                 <input type="hidden" name="u" value="4">
                                 <input type="hidden" name="f" value="4">
                                 <input type="hidden" name="s" value="">
@@ -372,8 +371,6 @@
                                 <input type="hidden" name="act" value="sub">
                                 <input type="hidden" name="v" value="2">
                                 <input type="hidden" name="or" value="246816027b4d3f31f9040a7620a2e7c4">
-                                
-                                <input type="hidden" name="redirect" value="https://neurosintonia.com.br/pagina-de-obrigado-webnar/">
                                 
                                 <div class="_form-content">
                                     <div class="_form_element">
@@ -389,7 +386,7 @@
                                         </div>
                                     </div>
                                     <div class="_button-wrapper">
-                                        <button id="_form_4_submit" class="_submit pulsate" type="submit">
+                                        <button id="form-submit-button" class="_submit pulsate" type="submit">
                                             Quero Restaurar Meu Casamento Agora!
                                         </button>
                                     </div>
@@ -406,7 +403,7 @@
 
         <section class="section benefits">
             <div class="container">
-                <h2 class="section-title">Para quem é a Sessão Experimental Gratuita?</h2>
+                <h2 class="section-title">Para quem é a Sessão Experimental?</h2>
                 <p class="section-subtitle">Esta mentoria é para mulheres decididas a dar uma última e verdadeira chance de restaurar sua família e seu casamento.</p>
                 
                 <div class="benefits-grid">
@@ -615,7 +612,56 @@
                 setupCarousel('.prints-carousel-container', 40);
             }
         });
-    </script>
 
+        // SCRIPT PARA ENVIO DO FORMULÁRIO PRINCIPAL
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('main-form');
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); 
+
+                const nameInput = form.querySelector('#fullname');
+                const emailInput = form.querySelector('#email');
+                if (nameInput.value.trim() === '' || emailInput.value.trim() === '') {
+                    alert('Por favor, preencha seu nome e e-mail.');
+                    return;
+                }
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Enviando...';
+
+                // 1. Envio para o Webhook do Make.com
+                const makeWebhookUrl = 'https://hook.us1.make.com/xxxxxxxxxxxxxxxxxxxxxxxx'; // SUBSTITUA PELA SUA URL REAL
+                
+                fetch(makeWebhookUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: nameInput.value, email: emailInput.value })
+                });
+
+                // 2. Envio para o ActiveCampaign
+                const activeCampaignFormData = new FormData(form);
+                activeCampaignFormData.append('u', '4');
+                activeCampaignFormData.append('f', '4');
+                activeCampaignFormData.append('act', 'sub');
+                // ... (outros campos hidden se houver)
+                
+                fetch('https://neurosintonia.activehosted.com/proc.php', {
+                    method: 'POST',
+                    body: activeCampaignFormData,
+                    mode: 'no-cors'
+                })
+                .catch(error => console.error('Erro no envio para ActiveCampaign:', error))
+                .finally(() => {
+                    // 3. Redirecionamento para a Página de Obrigado
+                    setTimeout(() => {
+                        window.location.href = 'https://neurosintonia.com.br/pagina-de-obrigado-webnar/';
+                    }, 800);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
