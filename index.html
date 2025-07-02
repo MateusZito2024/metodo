@@ -100,7 +100,7 @@
             object-fit: cover;
         }
         
-        /* === ESTILOS DE ALTA FIDELIDADE PARA O FORMULÁRIO === */
+        /* === ESTILOS DE ALTÍSSIMA FIDELIDADE PARA O FORMULÁRIO === */
         .hero-form-container {
             background: var(--white);
             padding: 25px 30px; 
@@ -220,7 +220,7 @@
             border: none;
         }
         
-        /* Restante do CSS */
+        /* O restante do seu CSS continua aqui... */
         .benefits { background-color: var(--accent-gold); }
         .benefits .section-title, .benefits .section-subtitle { color: var(--white); }
         .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; text-align: left; }
@@ -281,7 +281,9 @@
         @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
         @keyframes pulsate-button { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
         
+        /* ================================================== */
         /* === RESPONSIVIDADE (BASE - DESKTOP PRIMEIRO) === */
+        /* ================================================== */
         @media (max-width: 1100px) { .gallery-item { flex-basis: calc(33.333% - 16px); } }
         @media (max-width: 992px) { 
             .hero-content, .about-content { flex-direction: column-reverse; } 
@@ -291,7 +293,9 @@
             .hero-image-wrapper { display: none; }
         }
         
+        /* ============================================================== */
         /* === CSS MOBILE SUPER COMPACTO (A PARTIR DE TABLETS P/ BAIXO) === */
+        /* ============================================================== */
         .hidden { display: none !important; }
         @media (max-width: 768px) { .benefits-grid, .testimonial-prints-grid { display: none; } }
         .benefits-carousel-container, .prints-carousel-container { display: none; }
@@ -313,7 +317,11 @@
             .hero { padding-top: 45px; }
             footer { padding: 25px 0; }
             .logo-footer { display: none; }
-            .hero-content { gap: 25px; }
+            .hero .hero-content {
+                gap: 25px;
+                margin-left: -20px;
+                margin-right: -20px;
+            }
             .hero-form-container { padding: 20px; }
             .hero-form-container h1 { font-size: 1.7em; line-height: 1.3; text-align: center; margin-bottom: 10px; }
             .hero-form-container .subheadline { font-size: 0.85em; text-align: center; line-height: 1.4; margin-bottom: 15px; }
@@ -334,7 +342,7 @@
         @media (max-width: 480px) {
             .section { padding: 40px 15px; }
             .section-title { font-size: 1.6em; }
-            .hero-form-container h1 { font-size: 1.9em; }
+            .hero-form-container h1 { font-size: 1.5em; }
         }
     </style>
 </head>
@@ -399,7 +407,7 @@
 
         <section class="section benefits">
             <div class="container">
-                <h2 class="section-title">Para quem é a Sessão Experimental Gratuita?</h2>
+                <h2 class="section-title">Para quem é a Sessão Experimental?</h2>
                 <p class="section-subtitle">Esta mentoria é para mulheres decididas a dar uma última e verdadeira chance de restaurar sua família e seu casamento.</p>
                 
                 <div class="benefits-grid">
@@ -612,51 +620,52 @@
         // SCRIPT PARA ENVIO DO FORMULÁRIO PRINCIPAL
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('main-form');
-            const submitButton = form.querySelector('button[type="submit"]');
+            if (form) {
+                const submitButton = form.querySelector('button[type="submit"]');
 
-            form.addEventListener('submit', function(event) {
-                event.preventDefault(); 
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); 
 
-                const nameInput = form.querySelector('#fullname');
-                const emailInput = form.querySelector('#email');
-                if (nameInput.value.trim() === '' || emailInput.value.trim() === '') {
-                    alert('Por favor, preencha seu nome e e-mail.');
-                    return;
-                }
+                    const nameInput = form.querySelector('#fullname');
+                    const emailInput = form.querySelector('#email');
+                    if (!nameInput.value.trim() || !emailInput.value.trim()) {
+                        alert('Por favor, preencha todos os campos.');
+                        return;
+                    }
 
-                submitButton.disabled = true;
-                submitButton.textContent = 'Enviando...';
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Enviando...';
 
-                // 1. Envio para o Webhook do Make.com
-                const makeWebhookUrl = 'https://hook.us1.make.com/gvh2xwoousg953trp7fhd7sx150djzlu'; // URL REAL
-                
-                fetch(makeWebhookUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: nameInput.value, email: emailInput.value })
+                    // 1. Envio para o Webhook do Make.com
+                    const makeWebhookUrl = 'https://hook.us1.make.com/gvh2xwoousg953trp7fhd7sx150djzlu';
+                    
+                    fetch(makeWebhookUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: nameInput.value, email: emailInput.value })
+                    });
+
+                    // 2. Envio para o ActiveCampaign
+                    const activeCampaignFormData = new FormData(form);
+                    activeCampaignFormData.append('u', '4');
+                    activeCampaignFormData.append('f', '4');
+                    activeCampaignFormData.append('act', 'sub');
+                    
+                    fetch('https://neurosintonia.activehosted.com/proc.php', {
+                        method: 'POST',
+                        body: activeCampaignFormData,
+                        mode: 'no-cors'
+                    })
+                    .catch(error => console.error('Erro no envio para ActiveCampaign:', error))
+                    .finally(() => {
+                        // 3. Redirecionamento para a Página de Obrigado
+                        setTimeout(() => {
+                            window.location.href = 'https://neurosintonia.com.br/pagina-de-obrigado-webnar/';
+                        }, 800);
+                    });
                 });
-
-                // 2. Envio para o ActiveCampaign
-                const activeCampaignFormData = new FormData(form);
-                activeCampaignFormData.append('u', '4');
-                activeCampaignFormData.append('f', '4');
-                activeCampaignFormData.append('act', 'sub');
-        
-                
-                fetch('https://neurosintonia.activehosted.com/proc.php', {
-                    method: 'POST',
-                    body: activeCampaignFormData,
-                    mode: 'no-cors'
-                })
-                .catch(error => console.error('Erro no envio para ActiveCampaign:', error))
-                .finally(() => {
-                    // 3. Redirecionamento para a Página de Obrigado
-                    setTimeout(() => {
-                        window.location.href = 'https://neurosintonia.com.br/pagina-de-obrigado-webnar/';
-                    }, 800);
-                });
-            });
+            }
         });
     </script>
 </body>
