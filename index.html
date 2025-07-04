@@ -249,6 +249,62 @@
 .elementor-element-03e5882 .swiper-slide:nth-child(5) img {
     content: url('https://i.postimg.cc/R0jXj07c/1000212225.jpg');
 }
+	/* --- CÓDIGO FINAL E CORRETO (COM IMAGEM, DEGRADÊ E TAMANHO AJUSTADO) --- */
+
+/* 1. ESTILO PARA COMPUTADORES (DESKTOP) - COM A MÁSCARA ADICIONADA */
+.elementor-element-d8773bd {
+    background-image: url('https://i.postimg.cc/TYkYk2bJ/Renata-e-Rafael-Photoroom.png') !important;
+    background-position: center bottom !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+
+    /* ADICIONE ESTAS DUAS LINHAS PARA O EFEITO DEGRADÊ */
+    -webkit-mask-image: linear-gradient(to top, transparent 5%, black 40%);
+    mask-image: linear-gradient(to top, transparent 5%, black 40%);
+}
+
+
+/* 2. AJUSTES ESPECÍFICOS PARA CELULARES (MOBILE) */
+@media (max-width: 767px) {
+
+    /* Esconde a coluna de imagem que fica vazia no mobile (como já estava) */
+    .elementor-element-d8773bd {
+        display: none !important;
+    }
+
+    /* Aplica a imagem e o degradê em camadas na seção inteira */
+    .elementor-element-3ab091e {
+        /* A MÁGICA ACONTECE AQUI: Adicionamos uma 3ª camada por cima de tudo */
+        background-image:
+            /* CAMADA 3 (TOPO): O DEGRADÊ QUE APAGA A BASE DA FOTO */
+            linear-gradient(to top, black 40%, transparent 50%),
+
+            /* CAMADA 2 (MEIO): A FOTO */
+            url('https://i.postimg.cc/sfn6nbnR/Renata-e-Rafael-Photoroom-1.png'),
+
+            /* CAMADA 1 (FUNDO): O DEGRADÊ PRETO/CINZA */
+            linear-gradient(to top, #000000 0%, #2b2b2b 50%, #000000 100%) !important;
+
+        /* Posição de cada camada (a ordem importa) */
+        background-position:
+            center bottom,      /* Posição do degradê de fade */
+            center top,         /* Posição da FOTO */
+            center center !important; /* Posição do degradê de fundo */
+
+        /* Tamanho de cada camada (a ordem importa) */
+        background-size:
+            100% 100%,          /* Tamanho do degradê de fade */
+            contain,            /* Tamanho da FOTO */
+            cover !important;           /* Tamanho do degradê de fundo */
+
+        background-repeat: no-repeat !important;
+        padding-top: 562px !important; /* Mantém o seu espaçamento */
+    }
+
+    /* Ajuste no texto (inalterado) */
+    .elementor-element-f8a2546 {
+        padding: 0 15px 15px 15px;
+    }
 }
 </style>
 	<script>
