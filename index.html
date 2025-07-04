@@ -15,7 +15,144 @@
 	<link rel="icon" href="https://rafamachadoc.com.br/wp-content/uploads/2024/01/cropped-Ativo-2-1-192x192.png" sizes="192x192">
 	<link rel="apple-touch-icon" href="https://rafamachadoc.com.br/wp-content/uploads/2024/01/cropped-Ativo-2-1-180x180.png">
 	<meta name="msapplication-TileImage" content="https://rafamachadoc.com.br/wp-content/uploads/2024/01/cropped-Ativo-2-1-270x270.png">
+<style>
+/* Este código aplica um fundo complexo e uma imagem de sobreposição
+   na seção superior do site, identificada pelo ID #forms.
+*/
+#forms {
+  /* Garante que o posicionamento dos pseudo-elementos funcione corretamente. */
+  position: relative;
+  z-index: 0;
+  overflow: hidden; /* Garante que nada vaze para fora da seção */
+}
 
+/* CAMADA DE FUNDO - DESKTOP E MOBILE */
+#forms::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2; /* Fica atrás de tudo */
+
+  /* Múltiplos fundos para criar o efeito completo */
+  background-image:
+    /* Camada 1: DEGRADÊ PARA CRIAR A PARTE PRETA EMBAIXO */
+    linear-gradient(to top, black 45%, transparent 55%),
+    /* Camada 2: GRADIENTE PARA ESCURECER A IMAGEM DE FUNDO */
+    linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+    /* Camada 3: IMAGEM DE FUNDO PRINCIPAL */
+    url('https://i.postimg.cc/nLmpLR75/DSCF1774.jpg');
+
+  /* ENQUADRAMENTO PERFEITO: A imagem cobre toda a área, sem distorção. */
+  background-size: cover;
+  
+  /* Posição ajustável: 38% na horizontal, 50% (centro) na vertical */
+  background-position: 38% 50%;
+
+  /* A imagem de fundo não se repete */
+  background-repeat: no-repeat;
+}
+
+/* CAMADA DA IMAGEM DA RENATA (PNG) - DESKTOP (INTOCADA) */
+#forms::after {
+  content: '';
+  position: absolute;
+  
+  /* Posicionamento e Tamanho */
+  bottom: 0;
+  right: 15%;
+  width: 65%;
+  height: 105%;
+
+  /* Imagem e como ela se comporta */
+  background-image: url('https://i.postimg.cc/jjJTggSc/RENATA-MARIANO-Photoroom-1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+
+  /* Filtro para realçar a imagem */
+  filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.5)) brightness(1.05);
+
+  /* A imagem fica na frente do fundo, mas atrás do conteúdo */
+  z-index: -1;
+
+  /* Máscara com degradê aplicada APENAS na imagem PNG */
+  -webkit-mask-image: linear-gradient(to top, transparent 5%, black 30%);
+  mask-image: linear-gradient(to top, transparent 5%, black 30%);
+}
+
+/* --- CÓDIGO PARA MOVER A LOGO PARA BAIXO --- */
+.elementor-element-32bd91b {
+    margin-top: 25px !important; 
+}
+
+/* --- CÓDIGO PARA SUBSTITUIR A IMAGEM NA SEÇÃO "A 12ª EDIÇÃO" --- */
+.elementor-element-c6d6bed img {
+    content: url('https://i.postimg.cc/QdYdCYtk/RENATA-MARIANO-Photoroom-2.png');
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* --- AJUSTES NA SEÇÃO "A 12ª EDIÇÃO" (MÉTODO CORRIGIDO) --- */
+.elementor-element-5c16e44 {
+    /* Reduz o espaço em branco abaixo do texto, "puxando" a próxima seção para cima */
+    margin-bottom: -50px; 
+    /* Garante que esta seção possa conter elementos sobrepostos corretamente */
+    position: relative;
+    z-index: 1;
+}
+
+.elementor-element-c6d6bed {
+    /* Puxa o container da imagem para cima, criando a sobreposição */
+    transform: translateY(-80px);
+}
+
+
+/* ================================================= */
+/* AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES)      */
+/* ================================================= */
+@media (max-width: 767px) {
+  
+  /* Ajuste na imagem da Renata para mobile (INTOCADA) */
+  #forms::after {
+    /* Novo Tamanho */
+    width: 65%; 
+    height: auto;
+    aspect-ratio: 998 / 1200;
+
+    /* Nova Posição: Centralizada no Topo com ajuste fino */
+    top: 10.90%;
+    left: 43%;
+    
+    /* Centraliza o elemento no ponto de referência (top e left) */
+    transform: translate(-50%, -50%); 
+    
+    /* Removemos as regras de posicionamento do desktop */
+    bottom: auto;
+    right: auto;
+    
+    /* Alinhamos a imagem dentro do seu espaço */
+    background-position: center;
+
+    /* A mesma máscara também é aplicada na visão mobile */
+    -webkit-mask-image: linear-gradient(to top, transparent 5%, black 30%);
+    mask-image: linear-gradient(to top, transparent 5%, black 30%);
+  }
+
+  /* Ajuste da sobreposição da imagem no mobile */
+  .elementor-element-c6d6bed {
+      transform: translateY(-130px);
+  }
+
+  /* Ajuste para a seção não ficar muito fina no mobile */
+  .elementor-element-5c16e44 {
+      margin-bottom: 0; /* Remove a margem negativa no mobile */
+  }
+}
+</style>
 	<script>
 	!function(f,b,e,v,n,t,s)
 	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
