@@ -245,7 +245,7 @@
 
 /* 1. ESTILO PARA COMPUTADORES (DESKTOP) - COM A MÁSCARA ADICIONADA */
 .elementor-element-d8773bd {
-    background-image: url('https://i.postimg.cc/TYkYk2bJ/Renata-e-Rafael-Photoroom.png') !important;
+    background-image: url('https://i.postimg.cc/sfn6nbnR/Renata-e-Rafael-Photoroom-1.png') !important;
     background-position: center bottom !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
@@ -264,34 +264,32 @@
         display: none !important;
     }
 
-    /* Aplica a imagem e o degradê em camadas na seção inteira */
-    .elementor-element-3ab091e {
-        /* A MÁGICA ACONTECE AQUI: Adicionamos uma 3ª camada por cima de tudo */
-        background-image:
-            /* CAMADA 3 (TOPO): O DEGRADÊ QUE APAGA A BASE DA FOTO */
-            linear-gradient(to top, black 40%, transparent 50%),
+  /* Aplica a imagem e o degradê em camadas na seção inteira */
+.elementor-element-3ab091e {
+    /* As camadas de imagem de fundo continuam as mesmas */
+    background-image:
+        /* CAMADA 3 (TOPO): O DEGRADÊ QUE APAGA A BASE DA FOTO */
+        linear-gradient(to top, black 40%, transparent 50%),
+        /* CAMADA 2 (MEIO): A FOTO */
+        url('https://i.postimg.cc/sfn6nbnR/Renata-e-Rafael-Photoroom-1.png'),
+        /* CAMADA 1 (FUNDO): O DEGRADÊ PRETO/CINZA */
+        linear-gradient(to top, #000000 0%, #2b2b2b 50%, #000000 100%) !important;
 
-            /* CAMADA 2 (MEIO): A FOTO */
-            url('https://i.postimg.cc/sfn6nbnR/Renata-e-Rafael-Photoroom-1.png'),
+    /* --- AJUSTE A POSIÇÃO DA FOTO AQUI --- */
+    background-position:
+        center bottom,                                /* Posição do degradê de fade (não mexer) */
+        calc(50% + -1px) top,                         /* Posição da FOTO (Ex: movida 20px para a direita) */
+        center center !important;                     /* Posição do degradê de fundo (não mexer) */
 
-            /* CAMADA 1 (FUNDO): O DEGRADÊ PRETO/CINZA */
-            linear-gradient(to top, #000000 0%, #2b2b2b 50%, #000000 100%) !important;
+    /* Os tamanhos continuam os mesmos */
+    background-size:
+        100% 100%,
+        contain,
+        cover !important;
 
-        /* Posição de cada camada (a ordem importa) */
-        background-position:
-            center bottom,      /* Posição do degradê de fade */
-            center top,         /* Posição da FOTO */
-            center center !important; /* Posição do degradê de fundo */
-
-        /* Tamanho de cada camada (a ordem importa) */
-        background-size:
-            100% 100%,          /* Tamanho do degradê de fade */
-            contain,            /* Tamanho da FOTO */
-            cover !important;           /* Tamanho do degradê de fundo */
-
-        background-repeat: no-repeat !important;
-        padding-top: 562px !important; /* Mantém o seu espaçamento */
-    }
+    background-repeat: no-repeat !important;
+    padding-top: 562px !important; /* Mantém o seu espaçamento */
+}
 
     /* Ajuste no texto (inalterado) */
     .elementor-element-f8a2546 {
@@ -305,6 +303,26 @@
     font-size: 45px !important; /* Reduz drasticamente a fonte */
     line-height: 1 !important; /* Remove qualquer espaçamento extra */
     margin: 0 !important; /* Zera as margens para não empurrar */
+}
+	/* ================================================================ */
+/* CÓDIGO DEFINITIVO PARA SOBREPOSIÇÃO NO MOBILE (efeito "por trás") */
+/* ================================================================ */
+@media (max-width: 767px) {
+
+    /* 1. SEÇÃO DE CIMA (dos cards) */
+    .elementor-element-34a6dec {
+        position: relative !important;  /* Ativa o sistema de camadas */
+        z-index: 2 !important;         /* Define que esta seção ficará NA FRENTE */
+    }
+
+    /* 2. SEÇÃO DE BAIXO (da Renata, com fundo preto) */
+    .elementor-element-3ab091e {
+        position: relative !important; /* Ativa o sistema de camadas */
+        z-index: 1 !important;         /* Define que esta seção ficará ATRÁS */
+        
+        /* Puxa a seção para cima, fazendo-a deslizar para trás da seção dos cards */
+        margin-top: -215px !important; /* Ajuste o valor -80px para controlar o quanto ela sobe */
+    }
 }
 </style>
 	<script>
@@ -484,13 +502,12 @@
 					</div>
 					<div class="elementor-element elementor-element-f27054e elementor-widget elementor-widget-text-editor" data-id="f27054e" data-element_type="widget" data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
-							<p>Aprenda <strong><span class="cor1">o método silencioso validado pela neurociência e pela Palavra de Deus que já restaurou milhares de casamentos — mesmo depois da separação, da traição ou do divórcio.</span></strong></p>
+							<p>Aprenda <strong><span class="cor1">o método silencioso validado pela neurociência e pela Palavra de Deus que já restaurou milhares de casamentos mesmo depois da separação, da traição ou do divórcio.</span></strong></p>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-81896bc elementor-widget elementor-widget-text-editor" data-id="81896bc" data-element_type="widget" data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
-							<p>Garanta sua vaga na Aula NeuroSintonia, o evento gratuito e transformador onde você vai entender por que ele se afastou —
-e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele saber que é você.</p>
+							<p>Garanta sua vaga na Aula NeuroSintonia, o evento gratuito e transformador onde você vai entender por que ele se afastou e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele saber que é você.</p>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-e4bc74b elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="e4bc74b" data-element_type="widget" data-settings="{&quot;step_next_label&quot;:&quot;Pr\u00f3ximo&quot;,&quot;step_previous_label&quot;:&quot;Anterior&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}" data-widget_type="form.default">
@@ -566,7 +583,7 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 					</div>
 					<div class="elementor-element elementor-element-142b08a elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="142b08a" data-element_type="widget" data-widget_type="text-editor.default">
 						<div class="elementor-widget-container"> Essa é a sua chance de entender por que ele se afastou,
- e o que você pode fazer — em silêncio — para trazê-lo de volta, mesmo depois do divórcio ou de uma traição</div>
+ e o que você pode fazer em silêncio para trazê-lo de volta, mesmo depois do divórcio ou de uma traição</div>
 					</div>
 				</div>
 			</div>
@@ -591,7 +608,7 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 							</div>
 						</div>
 						<div class="elementor-element elementor-element-235459e elementor-widget elementor-widget-text-editor" data-id="235459e" data-element_type="widget" data-widget_type="text-editor.default">
-							<div class="elementor-widget-container">Descubra como reativar a conexão emocional com seu marido — sem brigas, sem humilhação e sem ele saber.</div>
+							<div class="elementor-widget-container">Descubra como reativar a conexão emocional com seu marido sem brigas, sem humilhação e sem ele saber.</div>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-3f16a85 e-con-full e-flex e-con e-child" data-id="3f16a85" data-element_type="container">
@@ -638,7 +655,7 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 				</div>
 				<div class="elementor-element elementor-element-27ec7ef elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="27ec7ef" data-element_type="widget" data-widget_type="text-editor.default">
 					<div class="elementor-widget-container">
-						<p>A NeuroSintonia foi criada para restaurar casamentos à beira do fim (ou que já tenham acabado) — mesmo quando há traição, separação ou silêncio total.
+						<p>A NeuroSintonia foi criada para restaurar casamentos à beira do fim (ou que já tenham acabado) mesmo quando há traição, separação ou silêncio total.
  Nesta aula, você vai entender o que realmente afasta um homem e como usar estratégias validadas pela neurociência e pela Palavra de Deus para trazer ele de volta sem se humilhar, sem implorar e sem ele saber.</p>
 					</div>
 				</div>
@@ -689,7 +706,7 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 											<span class="elementor-icon-list-icon">
 												<svg aria-hidden="true" class="e-font-icon-svg e-far-tired" viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm129.1-303.8c-3.8-4.4-10.3-5.4-15.3-2.5l-80 48c-3.6 2.2-5.8 6.1-5.8 10.3s2.2 8.1 5.8 10.3l80 48c5.4 3.2 11.8 1.6 15.3-2.5 3.8-4.5 3.9-11 .1-15.5L343.6 208l33.6-40.3c3.8-4.5 3.7-11.1-.1-15.5zM220 208c0-4.2-2.2-8.1-5.8-10.3l-80-48c-5-3-11.5-1.9-15.3 2.5-3.8 4.5-3.9 11-.1 15.5l33.6 40.3-33.6 40.3c-3.8 4.5-3.7 11 .1 15.5 3.5 4.1 9.9 5.7 15.3 2.5l80-48c3.6-2.2 5.8-6.1 5.8-10.3zm28 64c-45.4 0-100.9 38.3-107.8 93.3-1.5 11.8 6.9 21.6 15.5 17.9C178.4 373.5 212 368 248 368s69.6 5.5 92.3 15.2c8.5 3.7 17-6 15.5-17.9-6.9-55-62.4-93.3-107.8-93.3z"></path></svg>
 											</span>
-											<span class="elementor-icon-list-text"><span class="cor1">Os erros que afastam um homem — mesmo quando você só queria salvar o casamento</span></span>
+											<span class="elementor-icon-list-text"><span class="cor1">Os erros que afastam um homem mesmo quando você só queria salvar o casamento</span></span>
 										</li>
 									</ul>
 								</div>
@@ -727,7 +744,7 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 											<span class="elementor-icon-list-icon">
 												<svg aria-hidden="true" class="e-font-icon-svg e-fas-users" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"></path></svg>
 											</span>
-											<span class="elementor-icon-list-text"><span class="cor1">Como reativar a conexão emocional — sem ele saber que é você</span></span>
+											<span class="elementor-icon-list-text"><span class="cor1">Como reativar a conexão emocional sem ele saber que é você</span></span>
 										</li>
 									</ul>
 								</div>
@@ -767,7 +784,7 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 													</g>
 												</svg>
 											</span>
-											<span class="elementor-icon-list-text"><span class="cor1">Como fazer ELE pedir para voltar — sem se humilhar, sem se perder, e sem deixar de agir</span></span>
+											<span class="elementor-icon-list-text"><span class="cor1">Como fazer ELE pedir para voltar sem se humilhar, sem se perder, e sem deixar de agir</span></span>
 										</li>
 									</ul>
 								</div>
@@ -806,14 +823,14 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 				</div>
 				<div class="elementor-element elementor-element-56ed959 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="56ed959" data-element_type="widget" data-widget_type="text-editor.default">
 					<div class="elementor-widget-container">
-						<p>As 3 melhores Mentalidades DVE</p>
+						<p>Os 3 Pilares da Mulher que Restaura</p>
 					</div>
 				</div>
 				<div class="elementor-element elementor-element-95668ab elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="95668ab" data-element_type="widget" data-widget_type="text-editor.default">
-					<div class="elementor-widget-container"> Elas não são apenas frases de efeito. São verdadeiros manuais de conduta que irão recondicionar sua mente e elevar sua vida para um novo nível.</div>
+					<div class="elementor-widget-container"> Elas não são apenas frases de efeito. São chaves de posicionamento, validadas pela neurociência e pela Palavra, que alinham sua mente e seu espírito para a restauração do seu casamento.</div>
 				</div>
 				<div class="elementor-element elementor-element-6f8937e elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="6f8937e" data-element_type="widget" data-widget_type="text-editor.default">
-					<div class="elementor-widget-container"> Cada conteúdo foi cuidadosamente estruturado para fornecer as ferramentas essenciais que levarão sua vida a um novo patamar. No DVECLASS, você vai reprogramar seus pensamentos, otimizar suas emoções e criar ambientes de alto desempenho.</div>
+					<div class="elementor-widget-container"> Cada pilar foi estruturado para fornecer a base que você precisa para se reerguer. Na Aula NeuroSintonia, você vai aprender a ajustar sua mentalidade, governar suas emoções com sabedoria e transformar a atmosfera do seu lar.</div>
 				</div>
 			</div>
 		</div>
@@ -873,7 +890,7 @@ e como trazer seu marido de volta sem se humilhar, sem correr atrás e sem ele s
 			<div class="e-con-inner">
 				<div class="elementor-element elementor-element-cf1688c elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="cf1688c" data-element_type="widget" data-widget_type="text-editor.default">
 					<div class="elementor-widget-container">
-						<p>O que você terá acesso durante a aula da<span class="cor1">NeuroSintonia:</span></p>
+						<p>O que você terá acesso durante a aula da<span class="cor1"> NeuroSintonia:</span></p>
 					</div>
 				</div>
 				<div class="elementor-element elementor-element-d058202 e-flex e-con-boxed e-con e-child" data-id="d058202" data-element_type="container">
