@@ -26,61 +26,45 @@
   overflow: hidden; /* Garante que nada vaze para fora da seção */
 }
 
-/* CAMADA DE FUNDO - DESKTOP E MOBILE */
+/* CAMADA DE FUNDO - DESKTOP E MOBILE (AJUSTADA) */
 #forms::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -2; /* Fica atrás de tudo */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
 
-  /* Múltiplos fundos para criar o efeito completo */
-  background-image:
-    /* Camada 1: DEGRADÊ PARA CRIAR A PARTE PRETA EMBAIXO */
-    linear-gradient(to top, black 45%, transparent 55%),
-    /* Camada 2: GRADIENTE PARA ESCURECER A IMAGEM DE FUNDO */
-    linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-    /* Camada 3: IMAGEM DE FUNDO PRINCIPAL */
-    url('https://i.postimg.cc/nLmpLR75/DSCF1774.jpg');
+    background-image:
+        /* Vamos diminuir o degradê do fundo para não interferir */
+        linear-gradient(to top, black 20%, transparent 40%),
+        linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+        url('https://i.postimg.cc/nLmpLR75/DSCF1774.jpg');
 
-  /* ENQUADRAMENTO PERFEITO: A imagem cobre toda a área, sem distorção. */
-  background-size: cover;
-  
-  /* Posição ajustável: 38% na horizontal, 50% (centro) na vertical */
-  background-position: 38% 50%;
-
-  /* A imagem de fundo não se repete */
-  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 38% 50%;
+    background-repeat: no-repeat;
 }
 
-/* CAMADA DA IMAGEM DA RENATA (PNG) - DESKTOP (INTOCADA) */
+/* CAMADA DA IMAGEM DA RENATA (PNG) - DESKTOP (AJUSTADA) */
 #forms::after {
-  content: '';
-  position: absolute;
-  
-  /* Posicionamento e Tamanho */
-  bottom: 0;
-  right: 15%;
-  width: 65%;
-  height: 105%;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 15%;
+    width: 65%;
+    height: 105%;
+    background-image: url('https://i.postimg.cc/jjJTggSc/RENATA-MARIANO-Photoroom-1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.5)) brightness(1.05);
+    z-index: -1;
 
-  /* Imagem e como ela se comporta */
-  background-image: url('https://i.postimg.cc/jjJTggSc/RENATA-MARIANO-Photoroom-1.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-
-  /* Filtro para realçar a imagem */
-  filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.5)) brightness(1.05);
-
-  /* A imagem fica na frente do fundo, mas atrás do conteúdo */
-  z-index: -1;
-
-  /* Máscara com degradê aplicada APENAS na imagem PNG */
-  -webkit-mask-image: linear-gradient(to top, transparent 5%, black 30%);
-  mask-image: linear-gradient(to top, transparent 5%, black 30%);
+    /* AUMENTE O DEGRADÊ AQUI PARA FAZER A IMAGEM SUMIR MAIS */
+    -webkit-mask-image: linear-gradient(to top, transparent 15%, black 60%);
+    mask-image: linear-gradient(to top, transparent 15%, black 60%);
 }
 
 /* --- CÓDIGO PARA MOVER A LOGO PARA BAIXO --- */
@@ -119,12 +103,12 @@
   /* Ajuste na imagem da Renata para mobile (INTOCADA) */
   #forms::after {
     /* Novo Tamanho */
-    width: 70%; 
+    width: 100%; 
     height: auto;
     aspect-ratio: 998 / 1200;
 
     /* Nova Posição: Centralizada no Topo com ajuste fino */
-    top: 10.99%;
+    top: 17.99%;
     left: 43%;
     
     /* Centraliza o elemento no ponto de referência (top e left) */
