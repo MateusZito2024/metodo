@@ -147,10 +147,108 @@
       transform: translateY(-130px);
   }
 
-  /* Ajuste para a seção não ficar muito fina no mobile */
+ /* Remove o espaço vazio embaixo puxando a proxima seção para cima */
   .elementor-element-5c16e44 {
-      margin-bottom: 0; /* Remove a margem negativa no mobile */
+      margin-bottom: -280px !important;
   }
+	/* Puxa o container do texto para cima, aproximando-o da imagem */
+  .elementor-element-e7ecc9d {
+      transform: translateY(-280px); 
+  }
+	/* ================================================= */
+/* AJUSTES NA SEÇÃO "A NeuroSintonia é para você que" */
+/* ================================================= */
+
+/* Imagem 1: "Se sente ignorada..." */
+.elementor-element-27d6011 img {
+    content: url('https://i.postimg.cc/mrq3YSd7/Chat-GPT-Image-3-de-jul-de-2025-21-17-49.png');
+    filter: sepia(30%) contrast(1.1) brightness(0.95) saturate(0.9);
+}
+
+/* Imagem 2: "Já ouviu 'não te amo mais'..." */
+.elementor-element-3354df5 img {
+    content: url('https://i.postimg.cc/y82WnrH6/Chat-GPT-Image-3-de-jul-de-2025-21-21-50.png');
+    filter: sepia(30%) contrast(1.1) brightness(0.95) saturate(0.9);
+}
+
+/* Imagem 3: "Tá cansada de tentar..." */
+.elementor-element-492e1a4 img {
+    content: url('https://i.postimg.cc/k58GHFJQ/Chat-GPT-Image-3-de-jul-de-2025-21-23-31.png');
+    filter: sepia(30%) contrast(1.1) brightness(0.95) saturate(0.9);
+}
+
+/* Regra geral para garantir o enquadramento correto das novas imagens */
+.elementor-element-96a787a img,
+.elementor-element-3f16a85 img,
+.elementor-element-058de54 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* ================================================================ */
+/* CÓDIGO DO CARROSSEL COM ROLAGEM INFINITA E CONTÍNUA          */
+/* ================================================================ */
+
+/* 1. Esconde os slides extras, caso você adicione mais que 5 */
+.elementor-element-03e5882 .swiper-slide:nth-child(n+6) {
+    display: none;
+}
+
+/* 2. Prepara o container do carrossel */
+.elementor-element-03e5882 .elementor-widget-container {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* 3. Prepara o "filme" que vai deslizar */
+.elementor-element-03e5882 .swiper-wrapper {
+    width: 500%; /* Largura total para 5 imagens (5 x 100%) */
+    display: flex;
+    /* Aplica a nova animação com velocidade linear */
+    animation: carrossel-infinito 25s linear infinite;
+}
+
+/* 4. Define o tamanho de cada slide dentro do "filme" */
+.elementor-element-03e5882 .swiper-slide {
+    width: 20%; /* 100% (largura do wrapper) / 5 imagens = 20% cada */
+    flex-shrink: 0;
+}
+
+/* 5. Estiliza as imagens para ficarem bem enquadradas */
+.elementor-element-03e5882 .swiper-slide img {
+    width: 80%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* 6. Define a nova animação de deslize contínuo */
+@keyframes carrossel-infinito {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        /* Move a faixa de imagens até que a última imagem passe pela tela.
+           -80% corresponde ao deslocamento de 4 das 5 imagens. */
+        transform: translateX(-80%);
+    }
+}
+
+/* 7. Substituição das imagens (permanece igual) */
+.elementor-element-03e5882 .swiper-slide:nth-child(1) img {
+    content: url('https://i.postimg.cc/bYGyV9ms/DSCF1940-pb.jpg');
+}
+.elementor-element-03e5882 .swiper-slide:nth-child(2) img {
+    content: url('https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32.jpeg');
+}
+.elementor-element-03e5882 .swiper-slide:nth-child(3) img {
+    content: url('https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.29.jpeg');
+}
+.elementor-element-03e5882 .swiper-slide:nth-child(4) img {
+    content: url('https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.34-859x1024.jpeg');
+}
+.elementor-element-03e5882 .swiper-slide:nth-child(5) img {
+    content: url('https://i.postimg.cc/R0jXj07c/1000212225.jpg');
+}
 }
 </style>
 	<script>
