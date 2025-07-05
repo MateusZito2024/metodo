@@ -532,7 +532,31 @@ CSS PARA O NOVO RODAPÉ - COM CORREÇÃO DE LARGURA TOTAL
     .footer-links span {
         display: none; /* Esconde o separador "•" no mobile */
     }
+@media (max-width: 767px) {
+  /* Garante que o formulário fique na frente */
+  #forms {
+    position: relative !important;
+    z-index: 3 !important;
+  }
+
+  /* Garante que o botão dentro da seção do formulário esteja clicável */
+  #forms * {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Se o botão tiver uma classe específica, como .elementor-button, você pode reforçar: */
+  .elementor-button {
+    z-index: 5 !important;
+    position: relative !important;
+  }
+
+  /* Garante que a imagem não bloqueie interações */
+  #forms::after {
+    pointer-events: none !important;
+  }
 }
+
 </style>
 	<script>
 	!function(f,b,e,v,n,t,s)
