@@ -91,13 +91,15 @@
 /* CORREÇÃO FINAL COM Z-INDEX NEGATIVO (APENAS PC) */
 /* ================================================================ */
 @media (min-width: 1025px) {
+
     /*
     ==================================================================
-    CÓDIGO FINAL E CORRIGIDO
+    CÓDIGO FINAL E CORRIGIDO PARA PC (NÃO DEVE AFETAR O MOBILE)
     ==================================================================
     */
 
     /* --- PARTE 1: ORGANIZANDO AS CAMADAS DAS SEÇÕES --- */
+
     /* Seções de Cima e de Baixo ficam na FRENTE */
     .elementor-element-f26bc27,
     .elementor-element-34a6dec {
@@ -112,16 +114,21 @@
     }
 
     /* --- PARTE 2: ESTILIZAÇÃO INTERNA DA SEÇÃO DA FOTO --- */
+
     /* Fundo preto fica atrás do conteúdo da seção */
     .elementor-element-3ab091e::after {
         content: '';
         position: absolute;
         background-color: #000000 !important;
         z-index: -1;
-        top: 0; bottom: 0; left: 0; right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 
-    /* --- PARTE 3: IMAGEM COM CONTROLE TOTAL E FORÇADO --- */
+    /* --- PARTE 3: IMAGEM COM CONTROLE TOTAL E EFEITO DE "SUMIR" NAS BORDAS --- */
+
     .elementor-element-d8773bd {
         background-image: url('https://i.postimg.cc/sfn6nbnR/Renata-e-Rafael-Photoroom-1.png') !important;
         background-repeat: no-repeat !important;
@@ -129,21 +136,32 @@
         background-position: center bottom !important; /* Posição inicial da imagem */
 
         /* A) CONTROLE O TAMANHO AQUI */
-        min-height: 1000px !important; /* << Altere este valor para o TAMANHO */
+        min-height: 1000px !important;
 
-        /*
-          ===============================================================
-          B) CONTROLE MANUAL E FINO DA POSIÇÃO (MÉTODO 'TRANSFORM')
-          ===============================================================
-          Use 'transform' para mover a imagem com precisão.
-          Este método é o mais forte e deve funcionar.
+        /* B) CONTROLE MANUAL E FINO DA POSIÇÃO (MÉTODO 'TRANSFORM') */
+        transform: translate(-100px, -450px) !important;
 
-          Primeiro valor: move para Esquerda (-) ou Direita (+).
-          Segundo valor: move para Cima (-) ou Baixo (+).
-        */
-        transform: translate(-100px, -450px) !important; /* << Altere os valores aqui. Ex: translate(20px, -50px) */
+        /* C) EFEITO DE "SUMIR" NAS BORDAS (VINHETA SUAVE) */
+        -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
+        mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
     }
+/*
+  ==================================================================
+  NOVO: CÓDIGO PARA SUBIR A SEÇÃO FINAL ("ESSA É UMA IMERSÃO...")
+  ==================================================================
+  Isso faz a última seção subir e passar por cima da seção da foto.
+*/
+.elementor-element-03b88fa {
+    position: relative;      /* Necessário para o z-index funcionar */
+    z-index: 2 !important;   /* Coloca na mesma camada de "frente" das outras seções */
+    
+    /*
+      Use uma margem negativa para "puxar" a seção para cima.
+      Aumente o valor (ex: de -200px para -300px) para subir mais.
+    */
+    margin-top: -470px !important; /* << Altere este valor para controlar o quanto a seção sobe */
 }
+} /* << ESSA CHAVE DE FECHAMENTO É A MAIS IMPORTANTE! */
 /* ================================================= */
 /* AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES)      */
 /* ================================================= */
