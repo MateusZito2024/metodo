@@ -43,7 +43,7 @@
         url('https://i.postimg.cc/4dMqWCNY/Palco.jpg');
 
     background-size: cover;
-    background-position: 38% 50%;
+    background-position: 20% 10%;
     background-repeat: no-repeat;
 }
 
@@ -52,27 +52,28 @@
     content: '';
     position: absolute;
     bottom: 0;
-    right: 15%;
-    width: 65%;
-    height: 105%;
+    right: 13%;
+    width: 40%;
+    height: 140%;
     
     /* A MÁGICA ACONTECE AQUI: Adicionamos múltiplos fundos */
     background-image: 
         /* Camada 1 (Topo): O novo degradê preto de baixo para cima */
-        linear-gradient(to top, rgba(0,0,0,1) 29%, rgba(0,0,0,0) 62%),
+        linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 20%),
         
         /* Camada 2 (Meio): A imagem da Renata */
         url('https://i.postimg.cc/jjJTggSc/RENATA-MARIANO-Photoroom-1.png');
         
     /* O mask-image continua aqui, para o degradê de cima para baixo */
     -webkit-mask-image: linear-gradient(to top, transparent 15%, black 60%);
-    mask-image: linear-gradient(to top, transparent 15%, black 60%);
+    mask-image: linear-gradient(to top, transparent 8%, black 60%);
 
     background-size: contain; /* Garante que a imagem caiba inteira */
     background-repeat: no-repeat;
     background-position: bottom right; /* Alinha tudo à direita e na base */
     filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.5)) brightness(1.05);
     z-index: -1;
+	 transform: translate(70px, 100px); /* << Altere os dois valores aqui */
 }
 
 /* --- CÓDIGO PARA MOVER A LOGO PARA BAIXO --- */
@@ -145,7 +146,7 @@
         transform: translate(-100px, -450px) !important;
 
         /* C) EFEITO DE "SUMIR" NAS BORDAS (VINHETA SUAVE) */
-        -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
+        -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 85%);
         mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
     }
 /*
