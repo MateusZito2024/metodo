@@ -221,6 +221,21 @@ NOVO: CÓDIGO PARA AUMENTAR A LOGO NO TOPO (APENAS NO MOBILE)
     margin-right: auto;
     display: block;
 }
+	/*
+==================================================================
+NOVO: CÓDIGO PARA SUBIR O CARD FINAL ("ESSA É UMA IMERSÃO...")
+==================================================================
+*/
+.elementor-element-03b88fa {
+    position: relative;
+    z-index: 2 !important; /* Coloca na mesma camada da frente que as outras */
+
+    /*
+      Use uma margem negativa para "puxar" a seção para cima.
+      Aumente o valor (ex: de -200px para -300px) para subir mais.
+    */
+    margin-top: -200px !important; /* << Altere este valor para controlar o quanto o card sobe */
+}
   /* Ajuste na imagem da Renata para mobile (INTOCADA) */
   #forms::after {
     /* Novo Tamanho */
