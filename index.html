@@ -451,6 +451,87 @@ NOVO: CÓDIGO PARA SUBIR O CARD FINAL ("ESSA É UMA IMERSÃO...")
         /* Puxa a seção para cima, fazendo-a deslizar para trás da seção dos cards */
         margin-top: -200px !important; /* Ajuste o valor -80px para controlar o quanto ela sobe */
     }
+	/*
+==================================================================
+CSS PARA O NOVO RODAPÉ - COM CORREÇÃO DE LARGURA TOTAL
+==================================================================
+*/
+
+/* --- Estilos Gerais (Base para Mobile e PC) --- */
+.site-footer {
+    background-color: #0a0a0a;
+    color: #a0a0a0;
+    padding: 40px 25px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    border-top: 1px solid #222;
+    box-sizing: border-box;
+    
+    /*
+      ===============================================================
+      NOVO: CÓDIGO PARA FORÇAR LARGURA TOTAL (FULL-BLEED)
+      ===============================================================
+      Isso faz o fundo do rodapé "escapar" do contêiner principal e
+      ocupar 100% da largura da tela, de borda a borda.
+    */
+    position: relative;
+    width: 100vw; /* vw = viewport width (largura da tela) */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #a0a0a0;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-links span {
+    color: #555;
+}
+
+.footer-copyright p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Garante que a div das redes sociais (se ainda existir no HTML) não apareça */
+.footer-social {
+    display: none !important;
+}
+
+/* --- Ajustes Específicos para o Mobile --- */
+@media (max-width: 767px) {
+    .site-footer {
+        /* Adiciona um espaço de 40px ACIMA do rodapé, separando-o do card */
+        margin-top: 40px !important;
+    }
+
+    .footer-links a {
+        display: block; /* Links ficam um embaixo do outro */
+        margin: 8px 0;
+    }
+
+    .footer-links span {
+        display: none; /* Esconde o separador "•" no mobile */
+    }
 }
 </style>
 	<script>
