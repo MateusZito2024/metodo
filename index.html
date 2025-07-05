@@ -90,48 +90,60 @@
 /* ================================================================ */
 /* CORREÇÃO FINAL COM Z-INDEX NEGATIVO (APENAS PC) */
 /* ================================================================ */
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
+    /*
+    ==================================================================
+    CÓDIGO FINAL E CORRIGIDO
+    ==================================================================
+    */
 
-    /* --- PARTE 1: Reseta completamente as regras que quebram o layout --- */
-    .elementor-element-5c16e44,
-    .elementor-element-c6d6bed,
-    .elementor-element-e7ecc9d {
-        margin: 0 !important;
-        transform: none !important;
-        position: relative; /* Essencial para o z-index funcionar */
-    }
-
-    /* --- PARTE 2: A Seção de Cima ("Coloque Ordem...") --- */
-    .elementor-element-f26bc27 {
+    /* --- PARTE 1: ORGANIZANDO AS CAMADAS DAS SEÇÕES --- */
+    /* Seções de Cima e de Baixo ficam na FRENTE */
+    .elementor-element-f26bc27,
+    .elementor-element-34a6dec {
         position: relative;
-        z-index: 2 !important; /* Deixa ela na camada da frente */
+        z-index: 2 !important;
     }
 
-    /* --- PARTE 3: A Seção Laranja --- */
-    .elementor-element-5c16e44 {
-        /* Puxa a seção para cima */
-        margin-top: -80px !important; /* << Ajuste aqui para subir mais ou menos */
-
-        /* FORÇA a seção a ficar para TRÁS */
-        z-index: -1 !important; 
+    /* Nossa seção de trabalho fica ATRÁS */
+    .elementor-element-3ab091e {
+        position: relative !important;
+        z-index: 1 !important;
     }
 
-    /* --- PARTE 4: Mantém o layout de colunas da seção laranja --- */
-    .elementor-element-5c16e44 > .e-con-inner {
-        display: flex !important;
-        align-items: center !important;
-        padding: 25px 0 !important;
+    /* --- PARTE 2: ESTILIZAÇÃO INTERNA DA SEÇÃO DA FOTO --- */
+    /* Fundo preto fica atrás do conteúdo da seção */
+    .elementor-element-3ab091e::after {
+        content: '';
+        position: absolute;
+        background-color: #000000 !important;
+        z-index: -1;
+        top: 0; bottom: 0; left: 0; right: 0;
     }
-    .elementor-element-e7ecc9d {
-        width: 55% !important;
-        order: 1 !important;
-        padding-right: 25px;
+
+    /* --- PARTE 3: IMAGEM COM CONTROLE TOTAL E FORÇADO --- */
+    .elementor-element-d8773bd {
+        background-image: url('https://i.postimg.cc/sfn6nbnR/Renata-e-Rafael-Photoroom-1.png') !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important; /* Garante que a imagem não seja cortada */
+        background-position: center bottom !important; /* Posição inicial da imagem */
+
+        /* A) CONTROLE O TAMANHO AQUI */
+        min-height: 1000px !important; /* << Altere este valor para o TAMANHO */
+
+        /*
+          ===============================================================
+          B) CONTROLE MANUAL E FINO DA POSIÇÃO (MÉTODO 'TRANSFORM')
+          ===============================================================
+          Use 'transform' para mover a imagem com precisão.
+          Este método é o mais forte e deve funcionar.
+
+          Primeiro valor: move para Esquerda (-) ou Direita (+).
+          Segundo valor: move para Cima (-) ou Baixo (+).
+        */
+        transform: translate(-100px, -450px) !important; /* << Altere os valores aqui. Ex: translate(20px, -50px) */
     }
-    .elementor-element-70a47c0 {
-        width: 45% !important;
-        order: 2 !important;
-    }
-    }
+}
 /* ================================================= */
 /* AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES)      */
 /* ================================================= */
