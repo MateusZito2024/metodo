@@ -87,22 +87,51 @@
     height: auto;
     object-fit: cover;
 }
+/* ================================================================ */
+/* CORREÇÃO FINAL COM Z-INDEX NEGATIVO (APENAS PC) */
+/* ================================================================ */
+@media (min-width: 768px) {
 
-/* --- AJUSTES NA SEÇÃO "A 12ª EDIÇÃO" (MÉTODO CORRIGIDO) --- */
-.elementor-element-5c16e44 {
-    /* Reduz o espaço em branco abaixo do texto, "puxando" a próxima seção para cima */
-    margin-bottom: -50px; 
-    /* Garante que esta seção possa conter elementos sobrepostos corretamente */
-    position: relative;
-    z-index: 1;
-}
+    /* --- PARTE 1: Reseta completamente as regras que quebram o layout --- */
+    .elementor-element-5c16e44,
+    .elementor-element-c6d6bed,
+    .elementor-element-e7ecc9d {
+        margin: 0 !important;
+        transform: none !important;
+        position: relative; /* Essencial para o z-index funcionar */
+    }
 
-.elementor-element-c6d6bed {
-    /* Puxa o container da imagem para cima, criando a sobreposição */
-    transform: translateY(-830px);
-}
+    /* --- PARTE 2: A Seção de Cima ("Coloque Ordem...") --- */
+    .elementor-element-f26bc27 {
+        position: relative;
+        z-index: 2 !important; /* Deixa ela na camada da frente */
+    }
 
+    /* --- PARTE 3: A Seção Laranja --- */
+    .elementor-element-5c16e44 {
+        /* Puxa a seção para cima */
+        margin-top: -80px !important; /* << Ajuste aqui para subir mais ou menos */
 
+        /* FORÇA a seção a ficar para TRÁS */
+        z-index: -1 !important; 
+    }
+
+    /* --- PARTE 4: Mantém o layout de colunas da seção laranja --- */
+    .elementor-element-5c16e44 > .e-con-inner {
+        display: flex !important;
+        align-items: center !important;
+        padding: 25px 0 !important;
+    }
+    .elementor-element-e7ecc9d {
+        width: 55% !important;
+        order: 1 !important;
+        padding-right: 25px;
+    }
+    .elementor-element-70a47c0 {
+        width: 45% !important;
+        order: 2 !important;
+    }
+    }
 /* ================================================= */
 /* AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES)      */
 /* ================================================= */
@@ -598,7 +627,7 @@
 						<div class="elementor-element elementor-element-c93c8dc e-con-full e-flex e-con e-child" data-id="c93c8dc" data-element_type="container">
 							<div class="elementor-element elementor-element-27d6011 elementor-widget elementor-widget-image" data-id="27d6011" data-element_type="widget" data-widget_type="image.default">
 								<div class="elementor-widget-container">
-									<img decoding="async" width="428" height="287" src="https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-01-4.webp" class="attachment-full size-full wp-image-17127" alt="" srcset="https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-01-4.webp 428w, https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-01-4-300x201.webp 300w" sizes="(max-width: 428px) 100vw, 428px">
+									<img decoding="async" width="428" height="287" src="https://i.postimg.cc/mrq3YSd7/Chat-GPT-Image-3-de-jul-de-2025-21-17-49.png" class="attachment-full size-full wp-image-17127" alt="" srcset="https://i.postimg.cc/mrq3YSd7/Chat-GPT-Image-3-de-jul-de-2025-21-17-49.png 428w, https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-01-4-300x201.webp 300w" sizes="(max-width: 428px) 100vw, 428px">
 								</div>
 							</div>
 						</div>
@@ -615,7 +644,7 @@
 						<div class="elementor-element elementor-element-a1579ce e-con-full e-flex e-con e-child" data-id="a1579ce" data-element_type="container">
 							<div class="elementor-element elementor-element-3354df5 elementor-widget elementor-widget-image" data-id="3354df5" data-element_type="widget" data-widget_type="image.default">
 								<div class="elementor-widget-container">
-									<img loading="lazy" decoding="async" width="428" height="287" src="https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-02-2.webp" class="attachment-full size-full wp-image-17128" alt="" srcset="https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-02-2.webp 428w, https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-02-2-300x201.webp 300w" sizes="(max-width: 428px) 100vw, 428px">
+									<img loading="lazy" decoding="async" width="428" height="287" src="https://i.postimg.cc/y82WnrH6/Chat-GPT-Image-3-de-jul-de-2025-21-21-50.png" class="attachment-full size-full wp-image-17128" alt="" srcset="https://i.postimg.cc/y82WnrH6/Chat-GPT-Image-3-de-jul-de-2025-21-21-50.png 428w, https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-02-2-300x201.webp 300w" sizes="(max-width: 428px) 100vw, 428px">
 								</div>
 							</div>
 						</div>
@@ -632,7 +661,7 @@
 						<div class="elementor-element elementor-element-69b9fbb e-con-full e-flex e-con e-child" data-id="69b9fbb" data-element_type="container">
 							<div class="elementor-element elementor-element-492e1a4 elementor-widget elementor-widget-image" data-id="492e1a4" data-element_type="widget" data-widget_type="image.default">
 								<div class="elementor-widget-container">
-									<img loading="lazy" decoding="async" width="428" height="287" src="https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-03-2.webp" class="attachment-full size-full wp-image-17129" alt="" srcset="https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-03-2.webp 428w, https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-03-2-300x201.webp 300w" sizes="(max-width: 428px) 100vw, 428px">
+									<img loading="lazy" decoding="async" width="428" height="287" src="https://i.postimg.cc/k58GHFJQ/Chat-GPT-Image-3-de-jul-de-2025-21-23-31.png" class="attachment-full size-full wp-image-17129" alt="" srcset="https://i.postimg.cc/k58GHFJQ/Chat-GPT-Image-3-de-jul-de-2025-21-23-31.png 428w, https://rafamachadoc.com.br/wp-content/uploads/2025/03/IMG-03-2-300x201.webp 300w" sizes="(max-width: 428px) 100vw, 428px">
 								</div>
 							</div>
 						</div>
@@ -855,29 +884,21 @@
 								<div class="elementor-image-carousel-wrapper swiper" dir="ltr">
 									<div class="elementor-image-carousel swiper-wrapper">
 										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/1-13.webp" alt="1 (13)"></figure>
+											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://i.postimg.cc/bYGyV9ms/DSCF1940-pb.jpg" alt="1 (13)"></figure>
 										</div>
 										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/5-10.webp" alt="5 (10)"></figure>
+											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.32.jpeg" alt="5 (10)"></figure>
 										</div>
 										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/3-14.webp" alt="3 (14)"></figure>
+											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.29.jpeg" alt="3 (14)"></figure>
 										</div>
 										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/8-1.webp" alt="8 (1)"></figure>
+											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://neurosintonia.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-07-31-at-17.24.34-859x1024.jpeg" alt="8 (1)"></figure>
 										</div>
 										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/4-10.webp" alt="4 (10)"></figure>
+											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://i.postimg.cc/R0jXj07c/1000212225.jpg" alt="4 (10)"></figure>
 										</div>
-										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/7-1.webp" alt="7 (1)"></figure>
-										</div>
-										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/6-4.webp" alt="6 (4)"></figure>
-										</div>
-										<div class="swiper-slide">
-											<figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="https://rafamachadoc.com.br/wp-content/uploads/2025/04/2-14.webp" alt="2 (14)"></figure>
-										</div>
+		
 									</div>
 								</div>
 							</div>
