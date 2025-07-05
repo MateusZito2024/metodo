@@ -66,7 +66,7 @@
         
     /* O mask-image continua aqui, para o degradê de cima para baixo */
     -webkit-mask-image: linear-gradient(to top, transparent 15%, black 60%);
-    mask-image: linear-gradient(to top, transparent 8%, black 60%);
+    mask-image: linear-gradient(to top, transparent 10%, black 60%);
 
     background-size: contain; /* Garante que a imagem caiba inteira */
     background-repeat: no-repeat;
@@ -209,7 +209,18 @@ NOVO: CÓDIGO PARA SUBIR A SEÇÃO "A NEUROSINTONIA É PARA VOCÊ"
 /* AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES)      */
 /* ================================================= */
 @media (max-width: 767px) {
-  
+  /*
+==================================================================
+NOVO: CÓDIGO PARA AUMENTAR A LOGO NO TOPO (APENAS NO MOBILE)
+==================================================================
+*/
+.elementor-element-32bd91b img {
+    width: 140% !important; /* << Altere este valor para o tamanho desejado */
+    max-width: 350px !important; /* << Define um tamanho máximo para não ficar gigante */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
   /* Ajuste na imagem da Renata para mobile (INTOCADA) */
   #forms::after {
     /* Novo Tamanho */
