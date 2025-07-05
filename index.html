@@ -91,6 +91,9 @@
 /* CORREÇÃO FINAL COM Z-INDEX NEGATIVO (APENAS PC) */
 /* ================================================================ */
 @media (min-width: 1025px) {
+    .elementor-element-372dbf3 {
+        display: none !important;
+    }
 
     /*
     ==================================================================
@@ -160,6 +163,45 @@
       Aumente o valor (ex: de -200px para -300px) para subir mais.
     */
     margin-top: -470px !important; /* << Altere este valor para controlar o quanto a seção sobe */
+}
+	/*
+==================================================================
+NOVO: CÓDIGO PARA SUBIR A SEÇÃO LARANJA ("A 12ª EDIÇÃO...")
+==================================================================
+*/
+
+/* PASSO 1: Garante que a seção de cima (do formulário) fique na frente. */
+#forms {
+    position: relative;
+    z-index: 2 !important;
+}
+
+/* PASSO 2: Puxa a seção laranja para cima e a coloca na camada de trás. */
+.elementor-element-5c16e44 {
+    position: relative;
+    z-index: 1 !important; /* Fica atrás da seção de cima */
+
+    /*
+      Use uma margem negativa para "puxar" a seção para cima.
+      Aumente o valor (ex: de -80px para -120px) para que ela suba mais.
+    */
+    margin-top: -210px !important; /* << Altere este valor para controlar o quanto a seção sobe */
+}
+	/*
+==================================================================
+NOVO: CÓDIGO PARA SUBIR A SEÇÃO "A NEUROSINTONIA É PARA VOCÊ"
+==================================================================
+*/
+.elementor-element-a54aa15 {
+    position: relative;
+    z-index: 2 !important; /* Coloca na mesma camada de "frente" que as outras */
+
+    /*
+      Use uma margem negativa para "puxar" a seção para cima,
+      sobrepondo a seção laranja.
+      Aumente o valor (ex: de -100px para -150px) para subir mais.
+    */
+    margin-top: -175px !important; /* << Altere este valor para controlar o quanto sobe */
 }
 } /* << ESSA CHAVE DE FECHAMENTO É A MAIS IMPORTANTE! */
 /* ================================================= */
